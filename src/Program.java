@@ -15,6 +15,7 @@ public class Program{
     public Program(){
       input = new InputHandler();
       login = new LoginVerifyer();
+      login.verifyLogin("freddy", "hello");
     }
 
     public void systemLoop(){

@@ -1,0 +1,2 @@
+userID username password userType
+1 freddy aGVsbG8= 2
