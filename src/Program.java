@@ -1,4 +1,8 @@
-public class System{
+import finance.*;
+import management.*;
+import team.*;
+
+public class Program{
 
     private InputHandler input;
     private LoginVerifyer login;
@@ -8,7 +12,7 @@ public class System{
     private AccountManage accountManage;
     private TeamManage teamManage;
 
-    public System(){
+    public Program(){
       input = new InputHandler();
       login = new LoginVerifyer();
     }
