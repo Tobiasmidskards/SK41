@@ -1,7 +1,0 @@
-rm -rf *.class
-rm -rf finance/*.class
-rm -rf management/*.class
-rm -rf program/*.class
-rm -rf team/*.class
-
-javac SK41.java
