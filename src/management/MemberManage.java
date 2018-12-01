@@ -6,7 +6,7 @@ public class MemberManage{
   private Member temporaryMember;
 
 	public MemberManage() {
-
+    memberFH = new MemberFH();
 	}
 
   public void addMember(){

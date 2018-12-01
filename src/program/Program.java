@@ -18,6 +18,8 @@ public class Program{
       input = new InputHandler();
       login = new LoginVerifyer();
       login.verifyLogin("freddy", "hello");
+      login.verifyLogin("freddy", "hdello");
+      login.verifyLogin("fredddy", "hello");
     }
 
     public void systemLoop(){
