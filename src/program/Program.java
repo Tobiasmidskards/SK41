@@ -25,11 +25,18 @@ public class Program{
       systemRunning = true;
 
       while(systemRunning){
-        String username = input.giveInput();
-        String password = input.giveInput();
+        loginPrompt();
 
-        login.verifyLogin(username, password);
       }
+    }
+
+    public void loginPrompt(){
+      System.out.println("Please login:");
+      System.out.print("Username: ");
+      String username = input.giveInput();
+      System.out.print("Password: ");
+      String password = input.giveInput();
+      login.verifyLogin(username, password);
     }
 
 }

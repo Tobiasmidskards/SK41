@@ -8,7 +8,7 @@ import management.*;
 public class LoginVerifyer{
   boolean loggedIn = false;
   FileHandler fileHandler;
-  
+
   User user = new User(); // no user is logged in ~ empty constructor (init with userID -1)
 
   public LoginVerifyer(){
@@ -105,6 +105,12 @@ public class LoginVerifyer{
     } else {
       return true;
     }
+  }
+
+  public String createPassword(String password){
+
+    // Missing implementation
+    return password;
   }
 
 }
