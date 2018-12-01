@@ -17,14 +17,18 @@ public class Program{
     public Program(){
       input = new InputHandler();
       login = new LoginVerifyer();
-      login.verifyLogin("freddy", "hello");
-      login.verifyLogin("freddy", "hdello");
-      login.verifyLogin("fredddy", "hello");
+
+      systemLoop();
     }
 
     public void systemLoop(){
-      while(systemRunning){
+      systemRunning = true;
 
+      while(systemRunning){
+        String username = input.giveInput();
+        String password = input.giveInput();
+
+        login.verifyLogin(username, password);
       }
     }
 

@@ -8,14 +8,19 @@ import management.*;
 public class LoginVerifyer{
   boolean loggedIn = false;
   FileHandler fileHandler;
-  User user = User();
-
+  
+  User user = new User(); // no user is logged in ~ empty constructor (init with userID -1)
 
   public LoginVerifyer(){
     fileHandler = new FileHandler();
   }
 
   public boolean verifyLogin(String username, String password){
+
+    if(getLogin()){
+      System.out.printf("Error: %s is already logged in.\n", user.getFirstname());
+      return false;
+    }
 
     boolean succes = false;
 
@@ -31,12 +36,36 @@ public class LoginVerifyer{
         byte[] parPassword = line[2].getBytes();
 
         if (Arrays.equals(encodedPassword, parPassword)) {
-          System.out.println("You have successfully logged in.");
-          loggedIn = true;
+          System.out.println("Info: You have successfully logged in.");
+
+          user = new User();
+
+          user.setUserID(Integer.parseInt(line[0]));
+          user.setFirstname(line[3]);
+          user.setLastname(line[4]);
+          user.setEMail(line[5]);
+
+          UserType userType = UserType.TEAMLEADER;
+
+          switch(Integer.parseInt(line[6])) {
+            case 0:
+              userType = UserType.CHAIRMAN;
+              break;
+            case 1:
+              userType = UserType.ACCOUNTANT;
+              break;
+            case 2:
+              userType = UserType.TEAMLEADER;
+              break;
+          }
+
+          user.setUserType(userType);
+
+
           return true;
 
         } else {
-          System.out.println("Wrong password. Try again.");
+          System.out.println("Error: Wrong password. Try again.");
           return false;
         }
 
@@ -44,7 +73,7 @@ public class LoginVerifyer{
 
     }
 
-    System.out.println("No user with username: " + username + ".");
+    System.out.println("Error: No user with username: " + username + ".");
 
     // byte[] encodedBytes1 = Base64.getEncoder().encode(line[2].getBytes());
     // byte[] encodedBytes2 = Base64.getEncoder().encode(pass.getBytes());
@@ -58,20 +87,24 @@ public class LoginVerifyer{
   }
 
   public void logOut(){
-    loggedIn = false;
+    if(getLogin()) {
+      user = new User();
+    } else {
+      System.out.println("Error: There is no user logged in.");
+    }
+
   }
 
-  // SET AND GET METHODS.
-  public UserType getLoggedInUserType(){
-    return loggedInUserType;
-  }
-
-  public UserType getUserType(){
-    return userType;
+  public User getUser(){
+    return user;
   }
 
   public boolean getLogin(){
-    return loggedIn;
+    if (user.getUserID() == -1) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
 }
