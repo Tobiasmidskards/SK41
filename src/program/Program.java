@@ -46,14 +46,10 @@ public class Program{
 					case LOGIN:
 						login();
 						break;
-<<<<<<< HEAD
 					case MANAGEMENT:
 						chairmanMenu();
 						break;
 					case FINANCE:
-=======
-					case "2":
->>>>>>> 38392325a1fa06e6836571f55328c6bd6c7c9a50
 						accountantMenu();
 						break;
 					case TEAM:
@@ -129,12 +125,7 @@ public class Program{
           chairmanUpdate();
 					break;
         case "4":
-<<<<<<< HEAD
 					state = MenuState.LOGIN;
-=======
-          login.logOut();
-          systemRunning = false;
->>>>>>> 38392325a1fa06e6836571f55328c6bd6c7c9a50
           break;
         }
 			}
