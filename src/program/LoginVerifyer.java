@@ -29,7 +29,7 @@ public class LoginVerifyer{
 
     // Tjekker om der allerede er en som er logged ind.
     if(getLogin()){
-      System.out.printf("\nError: %s is already logged in.\n", user.getFirstname());
+      System.out.printf("\nFejl: %s er allerede logged ind.\n", user.getFirstname());
       return false;
     }
 
@@ -60,7 +60,7 @@ public class LoginVerifyer{
 
         // Så sammenligner vi de 2 passwords.
         if (Arrays.equals(encodedPassword, parPassword)) {
-          System.out.println("\nInfo: You have successfully logged in.");
+          System.out.println("\nInfo: Du er nu logged ind.");
 
 					// Smækker en scanner på vores databsefil.
 					Scanner memberFile = fileHandler1.openFile("db/members.txt");
@@ -106,7 +106,7 @@ public class LoginVerifyer{
           return true;
 
         } else {
-          System.out.println("\nError: Wrong password. Try again.");
+          System.out.println("\nFejl: Forkert password. Prøv igen.");
           return false;
         }
 
@@ -114,7 +114,7 @@ public class LoginVerifyer{
 
     }
 
-    System.out.println("\nError: No user with username: " + username + ".");
+    System.out.println("\nFejl: Der findes ingen bruger: " + username + ".");
 
     // byte[] encodedBytes1 = Base64.getEncoder().encode(loginLine[2].getBytes());
     // byte[] encodedBytes2 = Base64.getEncoder().encode(pass.getBytes());

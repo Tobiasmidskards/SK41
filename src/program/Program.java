@@ -6,7 +6,6 @@ import team.*;
 
 public class Program{
 
-
     // allokere hukkommelse til alle vores attributter.
     private InputHandler input;
     private LoginVerifyer login;
@@ -56,36 +55,52 @@ public class Program{
 					case TEAM:
 						teamleaderMenu();
 						break;
+					case TEAM2:
+						teamleaderPromt();
+						break;
 				}
       }
+
+			ui.bye();
     }
 
 		public void login(){
-      boolean isLoggedin = login.getLogin();
+      UserType isLoggedin = login.getUser().getUserType();
 
 			ui.login(isLoggedin);
 
 			inputString = input.giveInput();
 
 			switch(inputString){
+				case "0":
+					if(login.getLogin()){
+						changeMenu();
+					} else {
+						ui.wrongInput();
+					}
+
+					break;
 				case "1":
-					loginPrompt(isLoggedin);
+					loginPrompt();
 					ui.promptEnterMessage();
 					break;
 				case "2":
 					systemRunning = false;
 					break;
+				default:
+					ui.wrongInput();
+					break;
 			}
 
 		}
 
-    public void loginPrompt(boolean isLoggedin){
+    public void loginPrompt(){
       // Spørg efter input
 
-      if(isLoggedin){
+      if(login.getLogin()){
         login.logOut();
       } else {
-        System.out.println("\nPlease login:");
+        System.out.println("\nDu bedes indtaste dine loginoplysninger.\n");
         System.out.print("Username: ");
         String username = input.giveInput();
         System.out.print("Password: ");
@@ -94,24 +109,28 @@ public class Program{
         // Tjekker om de givne oplysninger er sande.
         login.verifyLogin(username, password);
 
-  			if(login.getLogin()){
-  				switch(login.getUser().getUserType()) {
-  					case CHAIRMAN:
-  						state = MenuState.MANAGEMENT;
-  						break;
-  					case TEAMLEADER:
-  						state = MenuState.TEAM;
-  						break;
-  					case ACCOUNTANT:
-  						state = MenuState.FINANCE;
-  						break;
-  					default:
-  						state = MenuState.LOGIN;
-  						break;
-  				}
-      }
+				changeMenu();
 			}
     }
+
+		public void changeMenu(){
+			if(login.getLogin()){
+				switch(login.getUser().getUserType()) {
+					case CHAIRMAN:
+						state = MenuState.MANAGEMENT;
+						break;
+					case TEAMLEADER:
+						state = MenuState.TEAM;
+						break;
+					case ACCOUNTANT:
+						state = MenuState.FINANCE;
+						break;
+					case NONE:
+						state = MenuState.LOGIN;
+						break;
+				}
+		}
+		}
 
 		public void chairmanMenu(){
 			ui.chairman();
@@ -134,6 +153,9 @@ public class Program{
         case "5":
           state = MenuState.LOGIN;
           break;
+				default:
+					ui.wrongInput();
+					break;
         }
 			}
 
@@ -189,6 +211,9 @@ public class Program{
         case"3":
 					state = MenuState.LOGIN;
           break;
+				default:
+					ui.wrongInput();
+					break;
       }
     }
     public void accountantUnpaid(){
@@ -204,7 +229,8 @@ public class Program{
 
       switch(inputString){
         case "1":
-          teamleaderPromt();
+					ui.clear();
+          state = MenuState.TEAM2;
           break;
         case "2":
 
@@ -212,6 +238,9 @@ public class Program{
         case "3":
 					state = MenuState.LOGIN;
           break;
+				default:
+					ui.wrongInput();
+					break;
       }
     }
     public void teamleaderPromt(){
@@ -226,8 +255,17 @@ public class Program{
 
           break;
         case "3":
-					state = MenuState.TEAM;
+
           break;
+				case "4":
+
+					break;
+				case "5":
+					state = MenuState.TEAM;
+					break;
+				default:
+					ui.wrongInput();
+					break;
 
       }
     }
