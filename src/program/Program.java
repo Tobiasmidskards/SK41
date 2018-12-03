@@ -37,9 +37,12 @@ public class Program{
       systemRunning = true;
 
       while(systemRunning){
-				ui.login();
+        //kun print inde i UI klassen
+        ui.login();
+        //Kig i klasse InputHandler
         inputString = input.giveInput();
 
+        //Anden form for if/else metode
 				switch(inputString){
 					case "1":
 						loginPrompt();
@@ -66,5 +69,22 @@ public class Program{
       // Tjekker om de givne oplysninger er sande.
       login.verifyLogin(username, password);
     }
+
+		public void chairmanMenu(){
+			ui.chaiman();
+			inputString = input.giveInput();
+
+			switch(inputString){
+				case "1":
+
+					break;
+				case "2":
+
+					break;
+				case "3":
+
+					break;
+			}
+		}
 
 }
