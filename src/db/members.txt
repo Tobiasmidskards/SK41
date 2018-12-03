@@ -1,1 +1,3 @@
-userID
+userID	CPR	firstName	lastName	dateOfBirth	address	phoneNumber	email	rating	elo
+1	290995****	Frederik	Jensen	29091995	Dalumvej 1 1tv	40464380	fsj95@hotmail.dk	5000	4000
+2	637483****	Tobias	Sørensen	63741993	Rødovrevej 12	36473823	tobi@gmail.com 4000 3000
