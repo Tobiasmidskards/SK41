@@ -37,9 +37,12 @@ public class Program{
       systemRunning = true;
 
       while(systemRunning){
-				ui.login();
+        //kun print inde i UI klassen
+        ui.login();
+        //Kig i klasse InputHandler
         inputString = input.giveInput();
 
+        //Anden form for if/else metode
 				switch(inputString){
 					case "1":
 						loginPrompt();

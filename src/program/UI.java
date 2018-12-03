@@ -13,7 +13,7 @@ public class UI{
 	public void bot(){
 		System.out.print("------------------ v0.1 -------------------\n");
 	}
-
+	//Det vi kalder inde i Program = UI.login
 	public void login(){
 		top();
 		System.out.print("\n1. Login\n2. Logout\n3. Exit\n ");
