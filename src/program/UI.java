@@ -38,11 +38,11 @@ public class UI{
 
 	public void accountant(){
 		top();
-		System.out.print("\n1. Unpaid subscription\n2. Find Junior members\n3. Exit\n");
+		System.out.print("\n1. Unpaid Subscribtion\n2. Find junior members\n3. Exit\n");
 		bot();
 		input();
 	}
-
+	
 	public void teamleader(){
 		top();
 		System.out.print("\n1. Chessmode\n2. Find member by rating\n3. Exit\n");
