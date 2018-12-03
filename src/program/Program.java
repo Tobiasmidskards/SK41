@@ -101,7 +101,7 @@ public class Program{
         login.logOut();
       } else {
         System.out.println("\nDu bedes indtaste dine loginoplysninger.\n");
-        System.out.print("Username: ");
+        System.out.print("Brugernavn: ");
         String username = input.giveInput();
         System.out.print("Password: ");
         String password = input.giveInput();
