@@ -16,6 +16,8 @@ public class Program{
     private AccountManage accountManage;
     private TeamManage teamManage;
 
+		private UI ui;
+
     private String inputString;
 
     public Program(){
@@ -23,6 +25,7 @@ public class Program{
       // initializere de klasser vi skal bruge.
       input = new InputHandler();
       login = new LoginVerifyer();
+			ui = new UI();
 
       // Kalder mainloop fra konstructoren.
       systemLoop();
@@ -34,7 +37,7 @@ public class Program{
       systemRunning = true;
 
       while(systemRunning){
-				System.out.print("1. Login\n2. Logout\n- ");
+				ui.login();
         inputString = input.giveInput();
 
 				switch(inputString){
@@ -45,6 +48,8 @@ public class Program{
 						login.logOut();
 						break;
 					case "3":
+						login.logOut();
+						systemRunning = false;
 						break;
 				}
       }
