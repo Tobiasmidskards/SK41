@@ -10,6 +10,7 @@ import management.*;
 public class LoginVerifyer{
 
   FileHandler fileHandler;
+	FileHandler fileHandler1;
 
   User user;
 
@@ -17,6 +18,7 @@ public class LoginVerifyer{
     // Vi initializere de klasser vi skal bruge i konstructoren.
 
     fileHandler = new FileHandler();
+		fileHandler1 = new FileHandler();
 
     // Ingen bruger er logged in. Derfor kalder vi en tom konstructor. (som sætter user.userID = -1);
     user = new User();
@@ -35,39 +37,61 @@ public class LoginVerifyer{
     boolean succes = false;
 
     // Smækker en scanner på vores databsefil.
-    Scanner file = fileHandler.openFile("db/login.txt");
+    Scanner loginFile = fileHandler.openFile("db/login.txt");
 
 
     // Den første linie vil være navnene på kolonnerne, så vi hopper lige den linie over.
-    file.nextLine();
+    loginFile.nextLine();
     // Hvis der er flere linier OG vi ikke hare fundet personen endnu, så kører whileloopet.
-    while(file.hasNextLine() && !succes) {
+    while(loginFile.hasNextLine() && !succes) {
       // Splitter den linie vi er på op i et array, hvor der tabs.
       // F.eks. "hej med dig" = ["hej", "med", "dig"].
-      // Så line[0] vil være = "hej"
+      // Så loginLine[0] vil være = "hej"
 
-      String[] line = file.nextLine().split("\\t");
+      String[] loginLine = loginFile.nextLine().split("\\t");
       // Hvis vi har fundet username, kan vi begynde at tjekke passwordet.
-      if(username.equals(line[1])){
+      if(username.equals(loginLine[1])){
 
         // Vi kryptere det givne password som brugeren har tastet ind.
         byte[] encodedPassword = Base64.getEncoder().encode(password.getBytes());
 
         // Så laver vi det password fra databasen, om til samme type, så vi kan sammenligne.
-        byte[] parPassword = line[2].getBytes();
+        byte[] parPassword = loginLine[2].getBytes();
 
         // Så sammenligner vi de 2 passwords.
         if (Arrays.equals(encodedPassword, parPassword)) {
           System.out.println("Info: You have successfully logged in.");
 
-          // Bruger setters til at sætte informationerne ind i User instancen.
-          user.setUserID(Integer.parseInt(line[0])); // Vi laver string om til en Int.
-          user.setFirstname(line[3]);
-          user.setLastname(line[4]);
-          user.setEMail(line[5]);
+					// Smækker en scanner på vores databsefil.
+					Scanner memberFile = fileHandler1.openFile("db/members.txt");
+
+					// Den første linie vil være navnene på kolonnerne, så vi hopper lige den linie over.
+					memberFile.nextLine();
+
+					// sætter en variabel, så vi kan stoppe med at søge hvis vi har fundet memberoplysningerne i databasen.
+			    boolean memberSucces = false;
+
+					while(memberFile.hasNextLine() && !memberSucces) {
+						// Splitter den linie vi er på op i et array, hvor der tabs.
+			      // F.eks. "hej med dig" = ["hej", "med", "dig"].
+			      // Så loginLine[0] vil være = "hej"
+
+			      String[] memberLine = memberFile.nextLine().split("\\t");
+
+						if(loginLine[0].equals(memberLine[0])){
+
+							// Bruger setters til at sætte informationerne ind i User instancen.
+							user.setUserID(Integer.parseInt(loginLine[0])); // Vi laver string om til en Int.
+							user.setFirstname(memberLine[2]);
+							user.setLastname(memberLine[3]);
+							user.setEMail(memberLine[7]);
+
+							memberSucces = true;
+						}
+					}
 
 
-          switch(Integer.parseInt(line[6])) {
+          switch(Integer.parseInt(loginLine[3])) {
             case 0:
               user.setUserType(UserType.CHAIRMAN);
               break;
@@ -92,7 +116,7 @@ public class LoginVerifyer{
 
     System.out.println("Error: No user with username: " + username + ".");
 
-    // byte[] encodedBytes1 = Base64.getEncoder().encode(line[2].getBytes());
+    // byte[] encodedBytes1 = Base64.getEncoder().encode(loginLine[2].getBytes());
     // byte[] encodedBytes2 = Base64.getEncoder().encode(pass.getBytes());
 
     // byte[] decodedBytes1 = Base64.getDecoder().decode(encodedBytes1);
