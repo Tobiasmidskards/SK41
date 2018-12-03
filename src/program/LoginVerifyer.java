@@ -107,6 +107,7 @@ public class LoginVerifyer{
 
   public void logOut(){
     if(getLogin()) {
+			System.out.printf("Info: %s have logged out.\n", user.getFirstname());
       user = new User();
     } else {
       System.out.println("Error: There is no user logged in.");

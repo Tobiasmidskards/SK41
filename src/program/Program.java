@@ -16,6 +16,8 @@ public class Program{
     private AccountManage accountManage;
     private TeamManage teamManage;
 
+    private String inputString;
+
     public Program(){
 
       // initializere de klasser vi skal bruge.
@@ -32,7 +34,19 @@ public class Program{
       systemRunning = true;
 
       while(systemRunning){
-        loginPrompt();
+				System.out.print("1. Login\n2. Logout\n- ");
+        inputString = input.giveInput();
+
+				switch(inputString){
+					case "1":
+						loginPrompt();
+						break;
+					case "2":
+						login.logOut();
+						break;
+					case "3":
+						break;
+				}
 
       }
     }
