@@ -48,7 +48,7 @@ public class Program{
 						loginPrompt();
 						break;
 					case "2":
-						login.logOut();
+						teamleaderMenu();
 						break;
 					case "3":
 						login.logOut();
@@ -71,7 +71,7 @@ public class Program{
     }
 
 		public void chairmanMenu(){
-			ui.chaiman();
+			ui.chairman();
 			inputString = input.giveInput();
 
 			switch(inputString){
@@ -84,7 +84,59 @@ public class Program{
 				case "3":
 
 					break;
+        case "4":
+          break;
+        }
 			}
-		}
+
+    public void accountantMenu(){
+      ui.accountant();
+      inputString = input.giveInput();
+
+      switch(inputString){
+        case "1":
+
+          break;
+        case"2":
+
+          break;
+        case"3":
+
+          break;
+      }
+    }
+    public void teamleaderMenu(){
+      ui.teamleader();
+      inputString = input.giveInput();
+
+      switch(inputString){
+        case "1":
+          teamleaderPromt();
+          break;
+        case "2":
+
+          break;
+        case "3":
+
+          break;
+      }
+    }
+    public void teamleaderPromt(){
+      ui.teamleaderChess();
+      inputString = input.giveInput();
+
+      switch (inputString) {
+        case "1":
+
+          break;
+        case "2":
+
+          break;
+        case "3":
+
+          break;
+
+      }
+    }
 
 }
