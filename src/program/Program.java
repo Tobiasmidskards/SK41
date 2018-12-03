@@ -128,7 +128,11 @@ public class Program{
           chairmanUpdate();
 					break;
         case "4":
-					state = MenuState.LOGIN;
+					memberManage.showAllMembers();
+          ui.promptEnterMessage();
+          break;
+        case "5":
+          state = MenuState.LOGIN;
           break;
         }
 			}

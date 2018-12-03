@@ -39,7 +39,7 @@ public class UI{
 	public void chairman(){
 		top();
 		System.out.print("\nManagement Menu\n");
-		System.out.print("\n1. Add Member\n2. Update Member\n3. Delete Member\n4. Back\n");
+		System.out.print("\n1. Add Member\n2. Update Member\n3. Delete Member\n4. Show all members\n5. Back\n");
 		bot();
 		input();
 	}
@@ -75,7 +75,7 @@ public class UI{
 
 	public void promptEnterMessage(){
 		scanner = new Scanner(System.in);
-		System.out.print("\nEnter anything to continue..");
+		System.out.print("\nTryk enter for at fortsætte..");
 		scanner.nextLine();
 	}
 

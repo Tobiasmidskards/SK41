@@ -1,3 +1,4 @@
 userID	userStatus	userPlayerType	dateOfMembership	debt
 1	active	funPlayer	29091995	0
 2	passive	tournamentPlayer	24121994	-100
+10	passive	tournamentPlayer	03122018	0
