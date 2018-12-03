@@ -7,16 +7,16 @@ public class UI{
 	}
 
 	public void top(){
-		System.out.print("\n---------- SK41 Management v0.1 -----------\n");
+		System.out.print("\n------------ SK41 Management  -------------\n");
 	}
 
 	public void bot(){
-		System.out.print("------------------ v0.1 -------------------\n");
+		System.out.print("\n------------------ v0.1 -------------------\n");
 	}
 
 	public void login(){
 		top();
-		System.out.print("\n1. Login\n2. Logout\n3. Exit\n ");
+		System.out.print("\n1. Login\n2. Logout\n3. Exit\n");
 		bot();
 		input();
 	}
