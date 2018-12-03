@@ -33,7 +33,7 @@ public class UI{
 		System.out.print("\n- ");
 	}
 
-	private void promptEnterMessage(){
+	public void promptEnterMessage(){
 		scanner = new Scanner(System.in);
 		System.out.print("\nEnter anything to continue..");
 		scanner.nextLine();

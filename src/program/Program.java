@@ -47,6 +47,7 @@ public class Program{
 				switch(inputString){
 					case "1":
 						loginPrompt();
+						ui.promptEnterMessage();
 						break;
 					case "2":
 						login.logOut();
