@@ -37,18 +37,16 @@ public class LoginVerifyer{
     // Smækker en scanner på vores databsefil.
     Scanner file = fileHandler.openFile("db/login.txt");
 
+
     // Den første linie vil være navnene på kolonnerne, så vi hopper lige den linie over.
     file.nextLine();
-
     // Hvis der er flere linier OG vi ikke hare fundet personen endnu, så kører whileloopet.
     while(file.hasNextLine() && !succes) {
-
-      // Splitter den linie vi er på op i et array, hvor der mellemrum.
+      // Splitter den linie vi er på op i et array, hvor der tabs.
       // F.eks. "hej med dig" = ["hej", "med", "dig"].
       // Så line[0] vil være = "hej"
 
-      String[] line = file.nextLine().split(" ");
-
+      String[] line = file.nextLine().split("\\t");
       // Hvis vi har fundet username, kan vi begynde at tjekke passwordet.
       if(username.equals(line[1])){
 
