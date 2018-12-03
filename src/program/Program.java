@@ -50,7 +50,7 @@ public class Program{
 						ui.promptEnterMessage();
 						break;
 					case "2":
-						teamleaderMenu();
+						chairmanMenu();
 						break;
 					case "3":
 						login.logOut();
@@ -81,7 +81,7 @@ public class Program{
 
 					break;
 				case "2":
-
+          chairmanUpdate();
 					break;
 				case "3":
 
@@ -90,6 +90,12 @@ public class Program{
           break;
         }
 			}
+
+    public void chairmanUpdate (){
+  		System.out.println("Please enter Member ID");
+  		System.out.print("Member ID: ");
+      String ID = input.giveInput();
+    	}
 
     public void accountantMenu(){
       ui.accountant();

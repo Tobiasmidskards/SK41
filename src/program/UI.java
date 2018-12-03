@@ -57,6 +57,7 @@ public class UI{
 	}
 
 
+
 	public void input(){
 		System.out.print("\n- ");
 	}
