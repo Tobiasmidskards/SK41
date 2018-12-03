@@ -37,6 +37,7 @@ public class Program{
       systemRunning = true;
 
       while(systemRunning){
+				ui.clear();
         //kun print inde i UI klassen
         ui.login();
         //Kig i klasse InputHandler
