@@ -70,4 +70,21 @@ public class Program{
       login.verifyLogin(username, password);
     }
 
+		public void chairmanMenu(){
+			ui.chaiman();
+			inputString = input.giveInput();
+
+			switch(inputString){
+				case "1":
+
+					break;
+				case "2":
+
+					break;
+				case "3":
+
+					break;
+			}
+		}
+
 }
