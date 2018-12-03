@@ -71,7 +71,7 @@ public class Program{
     }
 
 		public void chairmanMenu(){
-			ui.chaiman();
+			//ui.chaiman();
 			inputString = input.giveInput();
 
 			switch(inputString){

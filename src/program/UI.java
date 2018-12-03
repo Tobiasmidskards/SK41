@@ -1,9 +1,15 @@
 package program;
 
+import java.uit.*;
+
 public class UI{
 
 	public UI(){
 
+	}
+
+	public void clear() {
+		System.out.print("\033[H\033[2J");
 	}
 
 	public void top(){
@@ -23,6 +29,12 @@ public class UI{
 
 	public void input(){
 		System.out.print("\n- ");
+	}
+
+	private void promptEnterMessage(){
+		scanner = new Scanner(System.in);
+		System.out.print("\nEnter anything to continue..");
+		scanner.nextLine();
 	}
 
 
