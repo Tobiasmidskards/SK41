@@ -7,6 +7,8 @@ public class FileHandler{
 
   private File file;
   private Scanner scanner;
+  private FileWriter fileWriter;
+  private PrintWriter printWriter;
 
   public FileHandler(){
 
@@ -32,5 +34,20 @@ public class FileHandler{
 
     return scanner;
   }
+
+  public PrintWriter printFile(String filename){
+    try {
+        file = new File(filename);
+        if (file.canWrite()) {
+          fileWriter = new FileWriter(file, true);
+          printWriter = new PrintWriter(fileWriter);
+        }
+    } catch (IOException e) {
+      System.out.println(e);
+    }
+
+    return printWriter;
+  }
+
 
 }
