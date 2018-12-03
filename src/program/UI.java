@@ -43,7 +43,7 @@ public class UI{
 			System.out.print("\n1. Log ind");
 		}
 
-		System.out.print("\n2. Afslut program\n");
+		System.out.print("\n2. Afslut\n");
 		bot();
 		input();
 	}

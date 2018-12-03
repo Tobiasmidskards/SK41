@@ -7,7 +7,6 @@ import java.util.*;
 
 public class MemberManage{
 
-  private MemberFH memberFH;
   private Member temporaryMember;
   private FileHandler filehandler;
   private PrintWriter memberWriter;
@@ -17,7 +16,6 @@ public class MemberManage{
   private Date date;
 
 	public MemberManage() {
-    memberFH = new MemberFH();
     filehandler = new FileHandler();
     memberWriter = filehandler.printFile("db/members.txt");
     accountWriter = filehandler.printFile("db/accounting.txt");
@@ -40,16 +38,21 @@ public class MemberManage{
     while(scanner.hasNextLine()){
       String[] line = scanner.nextLine().split("\\t");
 
-      for (int s = 0; s<line.length;s++) {
-        if(s == 1 || s == 3 || s == 7) {
-          // Do nothing :'(
-        } else {
-          line[s] += indent.substring(0, indent.length() - line[s].length());
-        }
+			if(line[0].equals("\\N")){
+				// do nothing :'(
+			} else {
+				for (int s = 0; s<line.length;s++) {
+					if(s == 1 || s == 3 || s == 7) {
+						// Do nothing :'(
+					} else {
+						line[s] += indent.substring(0, indent.length() - line[s].length());
+					}
 
-      }
+				}
 
-      System.out.printf("%s%s%s%s%s\n", line[0], line[2], line[4], line[6] ,line[5]);
+				System.out.printf("%s%s%s%s%s\n", line[0], line[2], line[4], line[6] ,line[5]);
+			}
+
     }
 
 
@@ -67,7 +70,7 @@ public class MemberManage{
     // }
 
     // Skal altid være et id, som ikke findes. Hvordan gør vi det bedst?
-    
+
     int userID = 10;
 
     line = userID + "\t" + cpr + "\t" + firstname + "\t" +
@@ -105,7 +108,14 @@ public class MemberManage{
 
   }
 
-  public void deleteMember(){
+  public void deleteMember(String memberID){
+		if(filehandler.removeRow(memberID, "db/members.txt")){
+			System.out.println("\nBruger med ID [" + memberID + "] er blevet slettet.");
+		} else {
+			System.out.println("\nDer blev ikke fundet en bruger med ID [" + memberID + "]. Prøv igen.");
+		}
+		// Vi sletter ikke fra accounting, da der stadig kan være ubetalte regninger.
+		//filehandler.removeRow(memberID, "db/accounting.txt");
 
   }
 

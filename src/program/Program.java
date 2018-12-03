@@ -144,7 +144,7 @@ public class Program{
           chairmanUpdate();
 					break;
 				case "3":
-          chairmanUpdate();
+          chairmanRemove();
 					break;
         case "4":
 					memberManage.showAllMembers();
@@ -196,6 +196,14 @@ public class Program{
   		System.out.print("Member ID: ");
       String ID = input.giveInput();
     	}
+
+		public void chairmanRemove (){
+			System.out.println("Please enter Member ID");
+			System.out.print("Member ID: ");
+			String ID = input.giveInput();
+			memberManage.deleteMember(ID);
+			ui.promptEnterMessage();
+			}
 
     public void accountantMenu(){
       ui.accountant();

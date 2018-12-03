@@ -49,5 +49,53 @@ public class FileHandler{
     return printWriter;
   }
 
+	public boolean removeRow(String primaryKey, String tableName) {
+		try
+		{
+			File table = new File(tableName);
+
+			if (table.canWrite())
+			{
+				boolean rowDeleted = false;
+				RandomAccessFile raFile = new RandomAccessFile(table, "rw"); // rw = read/write
+				String lineRead = "";
+				String[] row;
+				long fileOffset = 0;
+
+				raFile.seek(fileOffset);
+				lineRead = raFile.readLine();
+
+				while (lineRead != null && !rowDeleted)
+				{
+					row = lineRead.split("\t");
+					if (primaryKey.equals(row[0]))
+					{
+						raFile.seek(fileOffset);
+						raFile.writeBytes("\\N\t"); // \N to represent removed
+						raFile.close(); //important in order to flush the stream
+
+						rowDeleted = true;
+						return true;
+					}
+					else
+					{
+						fileOffset = raFile.getFilePointer(); // save previous offset to point back to start of line we just read
+						lineRead = raFile.readLine();
+					}
+				}
+			}
+			else
+			{
+				System.out.printf("Cannot write to table: '%s'\n", tableName);
+				return false;
+			}
+		}
+		catch (Exception e)
+		{
+			System.out.println(e);
+		}
+		return false;
+	}
+
 
 }
