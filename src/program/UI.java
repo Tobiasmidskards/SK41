@@ -39,12 +39,16 @@ public class UI{
 
 	public void accountant(){
 		top();
+<<<<<<< HEAD
 		System.out.print("\nFinance Menu\n");
 		System.out.print("\n1. Unpaid subscription\n2. Find Junior members\n3. Back\n");
+=======
+		System.out.print("\n1. Unpaid Subscribtion\n2. Find junior members\n3. Exit\n");
+>>>>>>> 38392325a1fa06e6836571f55328c6bd6c7c9a50
 		bot();
 		input();
 	}
-
+	
 	public void teamleader(){
 		top();
 		System.out.print("\nTeams Menu\n");
@@ -59,6 +63,7 @@ public class UI{
 		System.out.print("\n1. Lynskak\n2. Hurtigskak\n3. Standard tuneringsskak\n4. Korrespondanceskak\n5. Back\n");
 		bot();
 	}
+
 
 
 	public void input(){

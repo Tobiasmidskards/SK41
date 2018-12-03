@@ -46,10 +46,14 @@ public class Program{
 					case LOGIN:
 						login();
 						break;
+<<<<<<< HEAD
 					case MANAGEMENT:
 						chairmanMenu();
 						break;
 					case FINANCE:
+=======
+					case "2":
+>>>>>>> 38392325a1fa06e6836571f55328c6bd6c7c9a50
 						accountantMenu();
 						break;
 					case TEAM:
@@ -116,19 +120,54 @@ public class Program{
 
 			switch(inputString){
 				case "1":
-
+          chairmanAdd();
 					break;
 				case "2":
-
+          chairmanUpdate();
 					break;
 				case "3":
-
+          chairmanUpdate();
 					break;
         case "4":
+<<<<<<< HEAD
 					state = MenuState.LOGIN;
+=======
+          login.logOut();
+          systemRunning = false;
+>>>>>>> 38392325a1fa06e6836571f55328c6bd6c7c9a50
           break;
         }
 			}
+
+    public void chairmanAdd(){
+      System.out.println("Fill out the form");
+      System.out.print("First Name: ");
+      String Firstname = input.giveInput();
+      System.out.print("Last Name: ");
+      String Lastname = input.giveInput();
+      System.out.print("Address: ");
+      String Address = input.giveInput();
+      System.out.print("CPR: ");
+      String CPR = input.giveInput();
+      System.out.print("Birthday (dd-mm-yyyy): ");
+      String Birthday = input.giveInput();
+      System.out.print("Membertype: ");
+      String Membertype = input.giveInput();
+      System.out.print("Phone number: ");
+      String Phonenumber = input.giveInput();
+      System.out.print("Email: ");
+      String Email = input.giveInput();
+      System.out.print("Player Type: ");
+      String Playertype = input.giveInput();
+
+      ui.promptEnterMessage();
+    }
+
+    public void chairmanUpdate (){
+  		System.out.println("Please enter Member ID");
+  		System.out.print("Member ID: ");
+      String ID = input.giveInput();
+    	}
 
     public void accountantMenu(){
       ui.accountant();
@@ -136,7 +175,7 @@ public class Program{
 
       switch(inputString){
         case "1":
-
+          accountantUnpaid();
           break;
         case"2":
 
@@ -146,6 +185,13 @@ public class Program{
           break;
       }
     }
+    public void accountantUnpaid(){
+      System.out.println("Please enter Member ID");
+      System.out.print("Member ID: ");
+      String ID = input.giveInput();
+    }
+
+
     public void teamleaderMenu(){
       ui.teamleader();
       inputString = input.giveInput();
