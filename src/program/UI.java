@@ -15,16 +15,23 @@ public class UI{
 	}
 
 	public void top(){
-		System.out.print("\n------------ SK41 Management  -------------\n");
+		System.out.print("\n░░░▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓ SK41 Management ▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒░░░░\n");
+
 	}
 
 	public void bot(){
-		System.out.print("\n------------------ v0.1 -------------------\n");
+		System.out.print("\n░░░▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓ version 1.0 ▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒░░░░\n");
 	}
 	//Det vi kalder inde i Program = UI.login
-	public void login(){
+	public void login(boolean login){
 		top();
-		System.out.print("\n1. Login\n2. Logout\n3. Exit\n");
+		if(login){
+			System.out.print("\n1. Logout");
+		} else {
+			System.out.print("\n1. Login");
+		}
+
+		System.out.print("\n2. Exit program\n");
 		bot();
 		input();
 	}

@@ -29,7 +29,7 @@ public class LoginVerifyer{
 
     // Tjekker om der allerede er en som er logged ind.
     if(getLogin()){
-      System.out.printf("Error: %s is already logged in.\n", user.getFirstname());
+      System.out.printf("\nError: %s is already logged in.\n", user.getFirstname());
       return false;
     }
 
@@ -106,7 +106,7 @@ public class LoginVerifyer{
           return true;
 
         } else {
-          System.out.println("Error: Wrong password. Try again.");
+          System.out.println("\nError: Wrong password. Try again.");
           return false;
         }
 
@@ -114,7 +114,7 @@ public class LoginVerifyer{
 
     }
 
-    System.out.println("Error: No user with username: " + username + ".");
+    System.out.println("\nError: No user with username: " + username + ".");
 
     // byte[] encodedBytes1 = Base64.getEncoder().encode(loginLine[2].getBytes());
     // byte[] encodedBytes2 = Base64.getEncoder().encode(pass.getBytes());
@@ -129,10 +129,10 @@ public class LoginVerifyer{
 
   public void logOut(){
     if(getLogin()) {
-			System.out.printf("Info: %s have logged out.\n", user.getFirstname());
+			System.out.printf("\nInfo: %s have logged out.\n", user.getFirstname());
       user = new User();
     } else {
-      System.out.println("Error: There is no user logged in.");
+      System.out.println("\nError: There is no user logged in.");
     }
 
   }
