@@ -60,7 +60,7 @@ public class LoginVerifyer{
 
         // Så sammenligner vi de 2 passwords.
         if (Arrays.equals(encodedPassword, parPassword)) {
-          System.out.println("Info: You have successfully logged in.");
+          System.out.println("\nInfo: You have successfully logged in.");
 
 					// Smækker en scanner på vores databsefil.
 					Scanner memberFile = fileHandler1.openFile("db/members.txt");

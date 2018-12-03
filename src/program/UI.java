@@ -31,28 +31,32 @@ public class UI{
 
 	public void chairman(){
 		top();
-		System.out.print("\n1. Add Member\n2. Update Member\n3. Delete Member\n4. Exit\n");
+		System.out.print("\nManagement Menu\n");
+		System.out.print("\n1. Add Member\n2. Update Member\n3. Delete Member\n4. Back\n");
 		bot();
 		input();
 	}
 
 	public void accountant(){
 		top();
-		System.out.print("\n1. Unpaid subscription\n2. Find Junior members\n3. Exit\n");
+		System.out.print("\nFinance Menu\n");
+		System.out.print("\n1. Unpaid subscription\n2. Find Junior members\n3. Back\n");
 		bot();
 		input();
 	}
 
 	public void teamleader(){
 		top();
-		System.out.print("\n1. Chessmode\n2. Find member by rating\n3. Exit\n");
+		System.out.print("\nTeams Menu\n");
+		System.out.print("\n1. Chessmode\n2. Find member by rating\n3. Back\n");
 		bot();
 		input();
 	}
 
 	public void teamleaderChess(){
 		top();
-		System.out.print("\n1. Lynskak\n2. Hurtigskak\n3. Standard tuneringsskak\n4. Korrespondanceskak\n");
+		System.out.print("\nTeams Menu\n");
+		System.out.print("\n1. Lynskak\n2. Hurtigskak\n3. Standard tuneringsskak\n4. Korrespondanceskak\n5. Back\n");
 		bot();
 	}
 

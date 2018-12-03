@@ -17,6 +17,7 @@ public class Program{
     private TeamManage teamManage;
 
 		private UI ui;
+		private MenuState state;
 
     private String inputString;
 
@@ -26,6 +27,7 @@ public class Program{
       input = new InputHandler();
       login = new LoginVerifyer();
 			ui = new UI();
+			state = MenuState.LOGIN;
 
       // Kalder mainloop fra konstructoren.
       systemLoop();
@@ -38,31 +40,50 @@ public class Program{
 
       while(systemRunning){
 				ui.clear();
-        //kun print inde i UI klassen
-        ui.login();
-        //Kig i klasse InputHandler
-        inputString = input.giveInput();
 
         //Anden form for if/else metode
-				switch(inputString){
-					case "1":
-						loginPrompt();
-						ui.promptEnterMessage();
+				switch(state){
+					case LOGIN:
+						login();
 						break;
-					case "2":
+					case MANAGEMENT:
+						chairmanMenu();
+						break;
+					case FINANCE:
+						accountantMenu();
+						break;
+					case TEAM:
 						teamleaderMenu();
-						break;
-					case "3":
-						login.logOut();
-						systemRunning = false;
 						break;
 				}
       }
     }
 
+		public void login(){
+			ui.login();
+
+			inputString = input.giveInput();
+
+			switch(inputString){
+				case "1":
+					loginPrompt();
+					ui.promptEnterMessage();
+					break;
+				case "2":
+					login.logOut();
+					ui.promptEnterMessage();
+					break;
+				case "3":
+					login.logOut();
+					systemRunning = false;
+					break;
+			}
+
+		}
+
     public void loginPrompt(){
       // Spørg efter input
-      System.out.println("Please login:");
+      System.out.println("\nPlease login:");
       System.out.print("Username: ");
       String username = input.giveInput();
       System.out.print("Password: ");
@@ -70,6 +91,23 @@ public class Program{
 
       // Tjekker om de givne oplysninger er sande.
       login.verifyLogin(username, password);
+
+			if(login.getLogin()){
+				switch(login.getUser().getUserType()) {
+					case CHAIRMAN:
+						state = MenuState.MANAGEMENT;
+						break;
+					case TEAMLEADER:
+						state = MenuState.TEAM;
+						break;
+					case ACCOUNTANT:
+						state = MenuState.FINANCE;
+						break;
+					default:
+						state = MenuState.LOGIN;
+						break;
+				}
+			}
     }
 
 		public void chairmanMenu(){
@@ -87,6 +125,7 @@ public class Program{
 
 					break;
         case "4":
+					state = MenuState.LOGIN;
           break;
         }
 			}
@@ -103,7 +142,7 @@ public class Program{
 
           break;
         case"3":
-
+					state = MenuState.LOGIN;
           break;
       }
     }
@@ -119,7 +158,7 @@ public class Program{
 
           break;
         case "3":
-
+					state = MenuState.LOGIN;
           break;
       }
     }
@@ -135,7 +174,7 @@ public class Program{
 
           break;
         case "3":
-
+					state = MenuState.TEAM;
           break;
 
       }
