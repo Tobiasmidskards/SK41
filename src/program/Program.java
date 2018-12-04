@@ -6,7 +6,6 @@ import team.*;
 
 public class Program{
 
-
     // allokere hukkommelse til alle vores attributter.
     private InputHandler input;
     private LoginVerifyer login;
@@ -27,6 +26,7 @@ public class Program{
       input = new InputHandler();
       login = new LoginVerifyer();
 			ui = new UI();
+      memberManage = new MemberManage();
 			state = MenuState.LOGIN;
 
       // Kalder mainloop fra konstructoren.
@@ -55,27 +55,40 @@ public class Program{
 					case TEAM:
 						teamleaderMenu();
 						break;
+					case TEAM2:
+						teamleaderPromt();
+						break;
 				}
       }
+
+			ui.bye();
     }
 
 		public void login(){
-			ui.login();
+      UserType isLoggedin = login.getUser().getUserType();
+
+			ui.login(isLoggedin);
 
 			inputString = input.giveInput();
 
 			switch(inputString){
+				case "0":
+					if(login.getLogin()){
+						changeMenu();
+					} else {
+						ui.wrongInput();
+					}
+
+					break;
 				case "1":
 					loginPrompt();
 					ui.promptEnterMessage();
 					break;
 				case "2":
-					login.logOut();
-					ui.promptEnterMessage();
-					break;
-				case "3":
-					login.logOut();
 					systemRunning = false;
+					break;
+				default:
+					ui.wrongInput();
 					break;
 			}
 
@@ -83,15 +96,24 @@ public class Program{
 
     public void loginPrompt(){
       // Spørg efter input
-      System.out.println("\nPlease login:");
-      System.out.print("Username: ");
-      String username = input.giveInput();
-      System.out.print("Password: ");
-      String password = input.giveInput();
 
-      // Tjekker om de givne oplysninger er sande.
-      login.verifyLogin(username, password);
+      if(login.getLogin()){
+        login.logOut();
+      } else {
+        System.out.println("\nDu bedes indtaste dine loginoplysninger.\n");
+        System.out.print("Brugernavn: ");
+        String username = input.giveInput();
+        System.out.print("Password: ");
+        String password = input.giveInput();
 
+        // Tjekker om de givne oplysninger er sande.
+        login.verifyLogin(username, password);
+
+				changeMenu();
+			}
+    }
+
+		public void changeMenu(){
 			if(login.getLogin()){
 				switch(login.getUser().getUserType()) {
 					case CHAIRMAN:
@@ -103,12 +125,12 @@ public class Program{
 					case ACCOUNTANT:
 						state = MenuState.FINANCE;
 						break;
-					default:
+					case NONE:
 						state = MenuState.LOGIN;
 						break;
 				}
-			}
-    }
+		}
+		}
 
 		public void chairmanMenu(){
 			ui.chairman();
@@ -122,34 +144,49 @@ public class Program{
           chairmanUpdate();
 					break;
 				case "3":
-          chairmanUpdate();
+          chairmanRemove();
 					break;
         case "4":
-					state = MenuState.LOGIN;
+					memberManage.showAllMembers();
+          ui.promptEnterMessage();
           break;
+        case "5":
+          state = MenuState.LOGIN;
+          break;
+				default:
+					ui.wrongInput();
+					break;
         }
 			}
 
     public void chairmanAdd(){
-      System.out.println("Fill out the form");
-      System.out.print("First Name: ");
-      String Firstname = input.giveInput();
-      System.out.print("Last Name: ");
-      String Lastname = input.giveInput();
-      System.out.print("Address: ");
-      String Address = input.giveInput();
-      System.out.print("CPR: ");
+      System.out.println("\nDu er ved at oprette en bruger i systemet. \nIndtast venligst følgende oplysninger:\n");
+      System.out.print("Navn: ");
+      String firstname = input.giveInput();
+      System.out.print("Efternavn: ");
+      String lastname = input.giveInput();
+      System.out.print("Addresse: ");
+      String address = input.giveInput();
+      System.out.print("CPR-nummer: ");
       String CPR = input.giveInput();
-      System.out.print("Birthday (dd-mm-yyyy): ");
-      String Birthday = input.giveInput();
-      System.out.print("Membertype: ");
-      String Membertype = input.giveInput();
-      System.out.print("Phone number: ");
-      String Phonenumber = input.giveInput();
-      System.out.print("Email: ");
-      String Email = input.giveInput();
-      System.out.print("Player Type: ");
-      String Playertype = input.giveInput();
+      System.out.print("Fødselsdag (ddmmyyyy): ");
+      String birthday = input.giveInput();
+      System.out.print("Telefon: ");
+      String phonenumber = input.giveInput();
+      System.out.print("e-eMail: ");
+      String email = input.giveInput();
+      System.out.print("\n0: aktiv\n1: passiv\n\nMedlemstype: ");
+      String memberstatus = input.giveInput();
+      System.out.print("\n0: spiller for sjov\n1: tourneringsspiller\n\nSpillertype : ");
+      String playertype = input.giveInput();
+      System.out.print("Rating : ");
+      String rating = input.giveInput();
+      System.out.print("ELO : ");
+      String elo = input.giveInput();
+
+      memberManage.addMember(CPR, firstname, lastname, birthday, address, phonenumber,
+                    email, rating, elo, memberstatus, playertype);
+
 
       ui.promptEnterMessage();
     }
@@ -159,6 +196,14 @@ public class Program{
   		System.out.print("Member ID: ");
       String ID = input.giveInput();
     	}
+
+		public void chairmanRemove (){
+			System.out.println("Please enter Member ID");
+			System.out.print("Member ID: ");
+			String ID = input.giveInput();
+			memberManage.deleteMember(ID);
+			ui.promptEnterMessage();
+			}
 
     public void accountantMenu(){
       ui.accountant();
@@ -174,6 +219,9 @@ public class Program{
         case"3":
 					state = MenuState.LOGIN;
           break;
+				default:
+					ui.wrongInput();
+					break;
       }
     }
     public void accountantUnpaid(){
@@ -195,7 +243,8 @@ public class Program{
 
       switch(inputString){
         case "1":
-          teamleaderPromt();
+					ui.clear();
+          state = MenuState.TEAM2;
           break;
         case "2":
           playerByRating();
@@ -203,6 +252,9 @@ public class Program{
         case "3":
 					state = MenuState.LOGIN;
           break;
+				default:
+					ui.wrongInput();
+					break;
       }
     }
     public void teamleaderPromt(){
@@ -219,12 +271,15 @@ public class Program{
         case "3":
 
           break;
-        case "4":
+				case "4":
 
-          break;
-        case "5":
+					break;
+				case "5":
 					state = MenuState.TEAM;
-          break;
+					break;
+				default:
+					ui.wrongInput();
+					break;
 
       }
     }

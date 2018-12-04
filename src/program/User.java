@@ -7,6 +7,7 @@ public class User{
 
   public User(){
     this.userID = -1;
+		this.userType = UserType.NONE;
   }
 
   public User(String firstname, String lastname, String eMail, UserType userType, int userID) {

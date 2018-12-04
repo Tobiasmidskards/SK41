@@ -1,4 +1,5 @@
 userID	CPR	firstName	lastName	dateOfBirth	address	phoneNumber	email	rating	elo
-1	290995****	Frederik	Jensen	29091995	Dalumvej 1 1tv	40464380	fsj95@hotmail.dk	5000	4000
+1	90995****	Frederik	Jensen	29091995	Dalumvej 1 1tv	40464380	fsj95@hotmail.dk	5000	4000
 2	637483****	Tobias	Sørensen	63741993	Rødovrevej 12	36473823	tobi@gmail.com 4000 3000
-3	772233****	Matijas	Marelja	120795	hejvej 13	88888888	mati@gmail.com	200	300
+10	08031996	Isabella	Dolang	08031996	Osteholmen 24	31787619	ostemail@ost.dk	569	1200
+3	772233****	Matijas	Marelja	12071995	hejvej 13	88888888	mati@gmail.com	200	300
