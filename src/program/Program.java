@@ -198,7 +198,7 @@ public class Program{
           teamleaderPromt();
           break;
         case "2":
-
+          playerByRating();
           break;
         case "3":
 					state = MenuState.LOGIN;
@@ -217,10 +217,20 @@ public class Program{
 
           break;
         case "3":
+
+          break;
+        case "4":
+
+          break;
+        case "5":
 					state = MenuState.TEAM;
           break;
 
       }
     }
-
+    public void playerByRating(){
+      System.out.println("Please enter rating number");
+      System.out.print("Rating number: ");
+      String ID = input.giveInput();
+    }
 }
