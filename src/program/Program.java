@@ -233,4 +233,8 @@ public class Program{
       System.out.print("Rating number: ");
       String ID = input.giveInput();
     }
+
+    public void blitzChess(){
+      System.out.println("Please enter ")
+    }
 }
