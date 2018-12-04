@@ -104,7 +104,7 @@ public class Program{
         System.out.println("\nDu bedes indtaste dine loginoplysninger.\n");
         System.out.print("Brugernavn: ");
         String username = input.giveInput();
-        System.out.print("Password: ");
+        System.out.print("Adgangskode: ");
         String password = input.giveInput();
 
         // Tjekker om de givne oplysninger er sande.
@@ -174,11 +174,11 @@ public class Program{
       String birthday = input.giveInput();
       System.out.print("Telefon: ");
       String phonenumber = input.giveInput();
-      System.out.print("e-eMail: ");
+      System.out.print("Email: ");
       String email = input.giveInput();
-      System.out.print("\n0: aktiv\n1: passiv\n\nMedlemstype: ");
+      System.out.print("\n0: Aktiv\n1: Passiv\n\nMedlemstype: ");
       String memberstatus = input.giveInput();
-      System.out.print("\n0: spiller for sjov\n1: tourneringsspiller\n\nSpillertype : ");
+      System.out.print("\n0: Spiller for sjov\n1: Tourneringsspiller\n\nSpillertype : ");
       String playertype = input.giveInput();
       System.out.print("Rating : ");
       String rating = input.giveInput();
@@ -193,14 +193,14 @@ public class Program{
     }
 
     public void chairmanUpdate (){
-  		System.out.println("Please enter Member ID");
-  		System.out.print("Member ID: ");
+  		System.out.println("Hvilket medlem ønsker du at opdatere?");
+  		System.out.print("Medlems ID: ");
       String ID = input.giveInput();
     	}
 
 		public void chairmanRemove (){
-			System.out.println("Please enter Member ID");
-			System.out.print("Member ID: ");
+			System.out.println("Indtast ID på det medlem du ønsker at fjerne.");
+			System.out.print("Medlems ID: ");
 			String ID = input.giveInput();
 			memberManage.deleteMember(ID);
 			ui.promptEnterMessage();
@@ -213,7 +213,7 @@ public class Program{
       switch(inputString){
         case "1":
 					accountManage.missedPayment();
-          // accountantUnpaid();
+          ui.promptEnterMessage();
           break;
         case"2":
           findJuniorMem();
@@ -227,14 +227,14 @@ public class Program{
       }
     }
     public void accountantUnpaid(){
-      System.out.println("Please enter Member ID");
-      System.out.print("Member ID: ");
+      System.out.println("Indtast ID på det ønskede medlem.");
+      System.out.print("Medlems ID: ");
       String ID = input.giveInput();
     }
 
     public void findJuniorMem(){
-      System.out.println("Please enter Memeber ID");
-      System.out.print("Member ID: ");
+      System.out.println("Indtast ID på det ønskede medlem.");
+      System.out.print("Medlems ID: ");
       String ID = input.giveInput();
     }
 
@@ -286,12 +286,12 @@ public class Program{
       }
     }
     public void playerByRating(){
-      System.out.println("Please enter rating number");
-      System.out.print("Rating number: ");
+      System.out.println("Indtast medlemmets rating");
+      System.out.print("Rating: ");
       String ID = input.giveInput();
     }
 
     public void blitzChess(){
-      System.out.println("Please enter ");
+      System.out.println("Indtast venligst ");
     }
 }

@@ -62,13 +62,13 @@ public class AccountManage{
 				}
 			}
 
-		System.out.println(allMembers);
-
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 
 		fileHandler.writeMissedPayment("ManglendeBetalinger(" +
 					String.valueOf(dateFormat.format(date)) + ").txt", allMembers);
 
+		System.out.println("\nInfo: Dokumentet \"ManglendeBetalinger(" +
+					String.valueOf(dateFormat.format(date)) + ").txt\" er nu oprettet." );
 	}
 }
