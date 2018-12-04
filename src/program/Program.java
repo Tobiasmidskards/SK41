@@ -290,6 +290,6 @@ public class Program{
     }
 
     public void blitzChess(){
-      System.out.println("Please enter ")
+      System.out.println("Please enter ");
     }
 }
