@@ -40,15 +40,27 @@ public class FileHandler{
 			int totalMissing = 0;
 			FileWriter fileWriter = new FileWriter(fileName);
     	PrintWriter printWriter = new PrintWriter(fileWriter);
+
 			Date date = new Date();
 			String dateFormat = String.format("%1$td.%1$tm-%1$tY", date);
+
+			String indent = "                                         ";
+
 			printWriter.println("Rapport for medlemmer i restance. \nUdarbejdet d. " + dateFormat + ".\n\n");
     	printWriter.print("Følgende medlemmer mangler at betale: \n\n");
+			
 			for (ArrayList<String> member : allMembers){
-					printWriter.printf("%s %s \t\t\t\t\t\t\t\t%skr.\n", member.get(7), member.get(8), member.get(4).substring(1));
+
+					String name = member.get(7) + " " + member.get(8);
+					name += indent.substring(0, indent.length() - name.length());
+
+					printWriter.printf("%s\t\t\t\t\t\t\t\t%s,-\n", name, member.get(4).substring(1));
 					totalMissing = totalMissing + Integer.parseInt(member.get(4));
 			}
-			printWriter.printf("\nTotal: \t\t\t\t\t\t\t\t%d", Math.abs(totalMissing));
+			String total = "Total:";
+			total += indent.substring(0, indent.length() - total.length());
+
+			printWriter.printf("\n%s\t\t\t\t\t\t\t\t%d,-", total,Math.abs(totalMissing));
     	printWriter.close();
 		} catch (IOException e) {
 
