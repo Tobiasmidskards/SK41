@@ -213,7 +213,7 @@ public class Program{
       switch(inputString){
         case "1":
 					accountManage.missedPayment();
-          // accountantUnpaid();
+          ui.promptEnterMessage();
           break;
         case"2":
           findJuniorMem();
