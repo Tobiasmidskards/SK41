@@ -37,7 +37,7 @@ public class LoginVerifyer{
     boolean succes = false;
 
     // Smækker en scanner på vores databsefil.
-    Scanner loginFile = fileHandler.openFile("db/login.txt");
+    Scanner loginFile = fileHandler.openFile("db/login.tsv");
 
 
     // Den første linie vil være navnene på kolonnerne, så vi hopper lige den linie over.
@@ -63,7 +63,7 @@ public class LoginVerifyer{
           System.out.println("\nInfo: Du er nu logged ind.");
 
 					// Smækker en scanner på vores databsefil.
-					Scanner memberFile = fileHandler1.openFile("db/members.txt");
+					Scanner memberFile = fileHandler1.openFile("db/members.tsv");
 
 					// Den første linie vil være navnene på kolonnerne, så vi hopper lige den linie over.
 					memberFile.nextLine();

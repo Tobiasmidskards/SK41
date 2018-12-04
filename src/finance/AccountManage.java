@@ -27,7 +27,7 @@ public class AccountManage{
 
 		FileHandler fileHandler = new FileHandler();
 
-		Scanner accountingFile = fileHandler.openFile("db/accounting.txt");
+		Scanner accountingFile = fileHandler.openFile("db/accounting.tsv");
 
 		String accountingColumnNames = accountingFile.nextLine();
 
@@ -38,7 +38,7 @@ public class AccountManage{
 
 				if (Integer.parseInt(accountingLine[4]) < 0) {
 
-					Scanner memberFile = fileHandler.openFile("db/members.txt");
+					Scanner memberFile = fileHandler.openFile("db/members.tsv");
 					String memberColumnNames = memberFile.nextLine();
 					boolean isFound = false;
 

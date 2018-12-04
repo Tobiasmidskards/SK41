@@ -17,40 +17,39 @@ public class MemberManage{
 
 	public MemberManage() {
     filehandler = new FileHandler();
-    memberWriter = filehandler.printFile("db/members.txt");
-    accountWriter = filehandler.printFile("db/accounting.txt");
+    memberWriter = filehandler.printFile("db/members.tsv");
+    accountWriter = filehandler.printFile("db/accounting.tsv");
 	}
 
   public void showAllMembers(){
-    scanner = filehandler.openFile("db/members.txt");
+    scanner = filehandler.openFile("db/members.tsv");
     scanner.nextLine();
 
-    String indent = "              ";
+    String indent = "                  ";
 
-    String[] rows = new String[]{"BrugerID","Navn","Fødselsdag","Telefon","Adresse"};
+    String[] rows = new String[]{"BrugerID","Navn","Telefon","Adresse"};
 
-    for (int s = 0; s<rows.length;s++) {
+		rows[0] += indent.substring(0, 12 - rows[0].length());
+
+    for (int s = 1; s<rows.length-1;s++) {
       rows[s] += indent.substring(0, indent.length() - rows[s].length());
     }
 
-    System.out.println("\nViser alle brugere:\n" + rows[0] + rows[1] + rows[2] + rows[3] + rows[4]);
+    System.out.println("\nViser alle brugere:\n" + rows[0] + rows[1] + rows[2] + rows[3]);
 
     while(scanner.hasNextLine()){
       String[] line = scanner.nextLine().split("\\t");
 
-			if(line[0].equals("\\N")){
-				// do nothing :'(
-			} else {
-				for (int s = 0; s<line.length;s++) {
-					if(s == 1 || s == 3 || s == 7) {
-						// Do nothing :'(
-					} else {
-						line[s] += indent.substring(0, indent.length() - line[s].length());
-					}
+			if(!line[0].equals("\\N")){
+				String name = "";
 
-				}
+				line[0] += indent.substring(0, 12 - line[0].length());
+				line[6] += indent.substring(0, indent.length() - line[6].length());
 
-				System.out.printf("%s%s%s%s%s\n", line[0], line[2], line[4], line[6] ,line[5]);
+				name = line[2].substring(0,1) + ". " + line[3]; // T. Sørensen
+				name += indent.substring(0, indent.length() - name.length());
+
+				System.out.printf("%s%s%s%s\n", line[0], name, line[6] ,line[5]);
 			}
 
     }
@@ -109,7 +108,7 @@ public class MemberManage{
   }
 
   public void deleteMember(String memberID){
-		if(filehandler.removeRow(memberID, "db/members.txt")){
+		if(filehandler.removeRow(memberID, "db/members.tsv")){
 			System.out.println("\nBruger med ID [" + memberID + "] er blevet slettet.");
 		} else {
 			System.out.println("\nDer blev ikke fundet en bruger med ID [" + memberID + "]. Prøv igen.");
