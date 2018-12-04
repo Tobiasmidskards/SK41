@@ -25,6 +25,7 @@ public class Program{
       // initializere de klasser vi skal bruge.
       input = new InputHandler();
       login = new LoginVerifyer();
+			accountManage = new AccountManage();
 			ui = new UI();
       memberManage = new MemberManage();
 			state = MenuState.LOGIN;
@@ -211,10 +212,11 @@ public class Program{
 
       switch(inputString){
         case "1":
-          accountantUnpaid();
+					accountManage.missedPayment();
+          // accountantUnpaid();
           break;
         case"2":
-
+          findJuniorMem();
           break;
         case"3":
 					state = MenuState.LOGIN;
@@ -230,6 +232,12 @@ public class Program{
       String ID = input.giveInput();
     }
 
+    public void findJuniorMem(){
+      System.out.println("Please enter Memeber ID");
+      System.out.print("Member ID: ");
+      String ID = input.giveInput();
+    }
+
 
     public void teamleaderMenu(){
       ui.teamleader();
@@ -241,7 +249,7 @@ public class Program{
           state = MenuState.TEAM2;
           break;
         case "2":
-
+          playerByRating();
           break;
         case "3":
 					state = MenuState.LOGIN;
@@ -277,5 +285,13 @@ public class Program{
 
       }
     }
+    public void playerByRating(){
+      System.out.println("Please enter rating number");
+      System.out.print("Rating number: ");
+      String ID = input.giveInput();
+    }
 
+    public void blitzChess(){
+      System.out.println("Please enter ");
+    }
 }

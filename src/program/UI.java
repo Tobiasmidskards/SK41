@@ -75,7 +75,7 @@ public class UI{
 	public void teamleaderChess(){
 		top();
 		System.out.print("\nHold Menu\n");
-		System.out.print("\n1. Lynskak\n2. Hurtigskak\n3. Standard tuneringsskak\n4. Korrespondanceskak\n5. Back\n");
+		System.out.print("\n1. Lynskak\n2. Hurtigskak\n3. Standard tuneringsskak\n4. Korrespondanceskak\n5. Tilbage\n");
 		bot();
 		input();
 	}

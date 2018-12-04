@@ -7,8 +7,8 @@ public class FileHandler{
 
   private File file;
   private Scanner scanner;
-  private FileWriter fileWriter;
-  private PrintWriter printWriter;
+	private FileWriter fileWriter;
+	private PrintWriter printWriter;
 
   public FileHandler(){
 
@@ -35,6 +35,27 @@ public class FileHandler{
     return scanner;
   }
 
+	public void writeMissedPayment(String fileName, ArrayList<ArrayList<String>> allMembers){
+		try {
+			int totalMissing = 0;
+			FileWriter fileWriter = new FileWriter(fileName);
+    	PrintWriter printWriter = new PrintWriter(fileWriter);
+			Date date = new Date();
+			String dateFormat = String.format("%1$td.%1$tm-%1$tY", date);
+			printWriter.println("Rapport for medlemmer i restance. \nUdarbejdet d. " + dateFormat + ".\n\n");
+    	printWriter.print("Følgende medlemmer mangler at betale: \n\n");
+			for (ArrayList<String> member : allMembers){
+					printWriter.printf("%s %s \t\t\t\t\t\t\t\t%skr.\n", member.get(7), member.get(8), member.get(4).substring(1));
+					totalMissing = totalMissing + Integer.parseInt(member.get(4));
+			}
+			printWriter.printf("\nTotal: \t\t\t\t\t\t\t\t%d", Math.abs(totalMissing));
+    	printWriter.close();
+		} catch (IOException e) {
+
+		}
+	}
+
+
   public PrintWriter printFile(String filename){
     try {
         file = new File(filename);
@@ -48,6 +69,7 @@ public class FileHandler{
 
     return printWriter;
   }
+
 
 	public boolean removeRow(String primaryKey, String tableName) {
 		try
@@ -96,6 +118,5 @@ public class FileHandler{
 		}
 		return false;
 	}
-
 
 }
