@@ -169,7 +169,7 @@ public class Program{
           accountantUnpaid();
           break;
         case"2":
-
+          findJuniorMem();
           break;
         case"3":
 					state = MenuState.LOGIN;
@@ -178,6 +178,12 @@ public class Program{
     }
     public void accountantUnpaid(){
       System.out.println("Please enter Member ID");
+      System.out.print("Member ID: ");
+      String ID = input.giveInput();
+    }
+
+    public void findJuniorMem(){
+      System.out.println("Please enter Memeber ID");
       System.out.print("Member ID: ");
       String ID = input.giveInput();
     }
