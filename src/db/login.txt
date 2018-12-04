@@ -1,3 +1,4 @@
 userID	username	password	userType
 1	freddy	aGVsbG8=	2
-2	toby	aGVsbG8=	1
+2	toby	aGVsbG8=	0
+3	mati	aGVsbG8=	1
