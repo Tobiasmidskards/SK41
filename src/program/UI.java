@@ -20,7 +20,7 @@ public class UI{
 	}
 
 	public void bot(){
-		System.out.print("\n░░░▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓ version 1.0 ▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒░░░░\n");
+		System.out.print("\n░░░▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓ Version 1.0 ▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒░░░░\n");
 	}
 
 	//Det vi kalder inde i Program = UI.login
