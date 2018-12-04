@@ -1,3 +1,11 @@
 userID	CPR	firstName	lastName	dateOfBirth	address	phoneNumber	email	rating	elo
 1	290995****	Frederik	Jensen	29091995	Dalumvej 1 1tv	40464380	fsj95@hotmail.dk	5000	4000
-2	637483****	Tobias	Sørensen	63741993	Rødovrevej 12	36473823	tobi@gmail.com 4000 3000
+2	161793****	Tobias	Sørensen	63741993	Rødovrevej 12	36473823	tobi@gmail.com	4000	3000
+3	131144****	Cecilie	Andersen	13111944	Strandalléen 22	25760965	cecilieandersen@gmail.com	3424	1231
+4	071193****	Jacob	Jeppesen	07111993	Stokløkken 46	46372645	jacobjeppesen@gmail.com	1543	1231
+5	140865****	Mie	Jørgensen	14081965	Nyhavn 33	32347552	miejørgensen@dayrep.com	1349	1543
+6	301239****	August	Andersen	30121939	Lundevænget 22	37485936	augustandersen@dayrep.com	1231	1543
+7	050665****	Marius	Schmidt	05061965	Vestergade 91	47362514	mariussmidt@hotmail.dk	1543	3547
+8	150188****	Filippa	Mikkelsen	15011988	Jernbanegade 17	37284956	filippamikkelsen@gmail.com	1231	3424
+9	290658****	Frederikke	Schou	29061958	Gartnervænget 39	473839463	frederikkeschou@hotmail.dk	3424	3547
+10	261175****	Johan	Kristiansen	26111975	Kongshøj Allé 86	37483935	johankristiansen@gmail.com	3424	1231
