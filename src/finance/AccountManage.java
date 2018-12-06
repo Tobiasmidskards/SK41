@@ -5,6 +5,7 @@ import java.io.*;
 import java.time.*;
 import program.*;
 
+import java.util.Calendar;
 
 
 import java.text.DateFormat;
@@ -21,11 +22,68 @@ public class AccountManage{
 
 	}
 
+	/*public void updateAccounting(){
+		fileHandler = new FileHandler();
+
+		Scanner accountingFile = fileHandler.openFile("db/accounting.tsv");
+
+
+		while(accountingFile.hasNextLine()) {
+			String[] accountingLine = accountingFile.nextLine().split("\\t");
+
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+			Calendar lastUpdateDate = Calendar.getInstance();
+			Calendar nowDate = Calendar.getInstance();
+			nowDate.add(Calendar.DATE, 1);
+			String[] dateStrings = accountingLine[5].split("-");
+
+			try{
+
+				lastUpdateDate.set(Integer.parseInt(dateStrings[0]), // This is + 1 year.
+											 Integer.parseInt(dateStrings[1]),
+											 Integer.parseInt(dateStrings[2]));
+
+			}	catch(Exception e){
+
+			}
+
+			lastUpdateDate.add(Calendar.MONTH, -1); // corrects month.
+
+			// String formatted = sdf.format(cal.getTime());
+			// String formatted1 = sdf.format(lastUpdate.getTime());
+
+			String[] info = new String[5];
+
+			info[0] = accountingLine[1];
+			info[1] = accountingLine[2];
+
+			Scanner memberFile = fileHandler.openFile("db/members.tsv");
+
+			while(memberFile.hasNextLine()){
+				String[] memberLine = memberFile.nextLine().split("\\t");
+
+				if(memberLine[0].equals(accountingLine[0])){
+
+				}
+
+			}
+
+			if(lastUpdateDate.compareTo(nowDate) < 0){
+
+
+
+			}
+
+		}
+
+	}*/
+
 	public void missedPayment(){
 
 		ArrayList<ArrayList<String>> allMembers = new ArrayList<ArrayList<String>>();
 
-		FileHandler fileHandler = new FileHandler();
+		fileHandler = new FileHandler();
 
 		Scanner accountingFile = fileHandler.openFile("db/accounting.tsv");
 

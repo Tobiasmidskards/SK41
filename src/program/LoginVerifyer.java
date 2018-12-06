@@ -9,10 +9,10 @@ import management.*;
 
 public class LoginVerifyer{
 
-  FileHandler fileHandler;
-	FileHandler fileHandler1;
+  private FileHandler fileHandler;
+	private FileHandler fileHandler1;
 
-  User user;
+  private User user;
 
   public LoginVerifyer(){
     // Vi initializere de klasser vi skal bruge i konstructoren.

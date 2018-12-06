@@ -48,10 +48,10 @@ public class FileHandler{
 
 			printWriter.println("Rapport for medlemmer i restance. \nUdarbejdet d. " + dateFormat + ".\n\n");
     	printWriter.print("Følgende medlemmer mangler at betale: \n\n");
-			
+
 			for (ArrayList<String> member : allMembers){
 
-					String name = member.get(7) + " " + member.get(8);
+					String name = member.get(8) + " " + member.get(9);
 					name += indent.substring(0, indent.length() - name.length());
 
 					printWriter.printf("%s\t\t\t\t\t\t\t\t%s,-\n", name, member.get(4).substring(1));
@@ -67,6 +67,24 @@ public class FileHandler{
 		}
 	}
 
+	public int nextID(){
+		int newID = 0;
+		scanner = openFile("program/config.conf");
+		newID = Integer.parseInt(scanner.nextLine())+1;
+
+
+		try{
+			File file = new File("program/config.conf");
+			file.createNewFile();
+			PrintWriter printWriter = new PrintWriter(file);
+			printWriter.println(newID);
+			printWriter.flush();
+			printWriter.close();
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+		return newID;
+	}
 
   public PrintWriter printFile(String filename){
     try {

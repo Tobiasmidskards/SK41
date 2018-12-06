@@ -8,7 +8,6 @@ public class Member{
   private String cpr;
   private Date birth;
   private double rating, ELO;
-  private MemberType memberType;
   private int memberID;
 
   public Member(){
@@ -77,14 +76,6 @@ public class Member{
 
 	public void setELO(double ELO) {
 		this.ELO = ELO;
-	}
-
-	public MemberType getMemberType() {
-		return this.memberType;
-	}
-
-	public void setMemberType(MemberType memberType) {
-		this.memberType = memberType;
 	}
 
 	public int getMemberID() {

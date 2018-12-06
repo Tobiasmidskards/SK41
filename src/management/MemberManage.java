@@ -17,8 +17,6 @@ public class MemberManage{
 
 	public MemberManage() {
     filehandler = new FileHandler();
-    memberWriter = filehandler.printFile("db/members.tsv");
-    accountWriter = filehandler.printFile("db/accounting.tsv");
 	}
 
   public void showAllMembers(){
@@ -54,42 +52,42 @@ public class MemberManage{
 
     }
 
-
   }
 
-  public void addMember(String cpr, String firstname, String lastName, String dateOfBirth,
-                        String address, String phoneNumber, String email, String rating,
-                        String elo, String memberstatus, String playertype){
+  public boolean addMember(String[] form){
 
+		memberWriter = filehandler.printFile("db/members.tsv");
+		accountWriter = filehandler.printFile("db/accounting.tsv");
 
-    // er spilleren allerede i systemet?
-    //
-    // if(cpr.equals(database.cpr)) {
-    //   afbryd
-    // }
+		line = "";
 
-    // Skal altid være et id, som ikke findes. Hvordan gør vi det bedst?
+		for(int i = 0; i < form.length; i++){
+			if(form[i].equals("")){
+				return false;
+			} else {
+				line += form[i] + "\t";
+			}
+		}
 
-    int userID = 10;
-
-    line = userID + "\t" + cpr + "\t" + firstname + "\t" +
-           lastName + "\t" + dateOfBirth + "\t" + address + "\t" +
-           phoneNumber + "\t" + email + "\t" + rating + "\t" + elo;
+    int userID = filehandler.nextID();
 
     memberWriter.println(line);
     memberWriter.flush();
 
     date = new Date();
-    String dateFormat = String.format("%1$td%1$tm%1$tY", date);
+		String dateFormat = String.format("%1$tY-%1$tm-%1$td", date);
     String debt = "0";
 
-    if(playertype.equals("0")){
+		String memberstatus = form[9];
+		String playertype = form[10];
+
+    if(playertype.equals("1")){
       playertype = "funPlayer";
     } else {
       playertype = "tournamentPlayer";
     }
 
-    if(memberstatus.equals("0")){
+    if(memberstatus.equals("1")){
       memberstatus = "active";
     } else {
       memberstatus = "passive";
@@ -101,10 +99,67 @@ public class MemberManage{
 
     memberWriter.close();
     accountWriter.close();
+
+		System.out.printf("\n%s er nu oprettet med ID: [%s]\n", form[0], userID);
+		return true;
   }
 
-  public void updateMember(){
+  public boolean updateMember(String memberID, String field){
 
+		Scanner scanner = new Scanner(System.in);
+
+		memberWriter = filehandler.printFile("db/members.tsv");
+		accountWriter = filehandler.printFile("db/accounting.tsv");
+
+		scanner = filehandler.openFile("db/members.tsv");
+
+		while(scanner.hasNextLine()){
+			String[] line = scanner.nextLine().split("\\t");
+			if(memberID.equals(line[0])){
+
+				filehandler.removeRow(memberID, "db/members.tsv")
+
+				switch(field){
+					case "1":
+						line[2] = scanner.nextLine();
+						break;
+					case "2":
+						line[3] = scanner.nextLine();
+						break;
+					case "3":
+						line[5] = scanner.nextLine();
+						break;
+					case "4":
+						line[4] = scanner.nextLine();
+						break;
+					case "5":
+						line[6] = scanner.nextLine();
+						break;
+					case "6":
+						line[7] = scanner.nextLine();
+						break;
+					case "7":
+						break;
+					case "8":
+						break;
+					case "9":
+						line[8] = scanner.nextLine();
+						break;
+					case "10":
+						line[9] = scanner.nextLine();
+						break;
+					default:
+						return false;
+
+			}
+
+		}
+
+
+
+		}
+
+		return false;
   }
 
   public void deleteMember(String memberID){

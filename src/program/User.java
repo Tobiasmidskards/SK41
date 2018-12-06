@@ -10,14 +10,6 @@ public class User{
 		this.userType = UserType.NONE;
   }
 
-  public User(String firstname, String lastname, String eMail, UserType userType, int userID) {
-    this.firstname = firstname;
-    this.lastname = lastname;
-    this.eMail = eMail;
-    this.userType = userType;
-    this.userID = userID;
-  }
-
 	public String getFirstname() {
 		return this.firstname;
 	}

@@ -41,7 +41,6 @@ public class Program{
 
       while(systemRunning){
 				ui.clear();
-
         //Anden form for if/else metode
 				switch(state){
 					case LOGIN:
@@ -161,42 +160,57 @@ public class Program{
 			}
 
     public void chairmanAdd(){
+
+			String[] form = new String[11];
+
       System.out.println("\nDu er ved at oprette en bruger i systemet. \nIndtast venligst følgende oplysninger:\n");
       System.out.print("Navn: ");
-      String firstname = input.giveInput();
+      form[0] = input.giveInput();
       System.out.print("Efternavn: ");
-      String lastname = input.giveInput();
+      form[1] = input.giveInput();
       System.out.print("Addresse: ");
-      String address = input.giveInput();
-      System.out.print("CPR-nummer: ");
-      String CPR = input.giveInput();
+      form[2] = input.giveInput();
+      System.out.print("CPR-nummer (xxxxxxxxxx): ");
+      form[3] = input.giveInput();
       System.out.print("Fødselsdag (ddmmyyyy): ");
-      String birthday = input.giveInput();
+      form[4] = input.giveInput();
       System.out.print("Telefon: ");
-      String phonenumber = input.giveInput();
+      form[5] = input.giveInput();
       System.out.print("Email: ");
-      String email = input.giveInput();
-      System.out.print("\n0: Aktiv\n1: Passiv\n\nMedlemstype: ");
-      String memberstatus = input.giveInput();
-      System.out.print("\n0: Spiller for sjov\n1: Tourneringsspiller\n\nSpillertype : ");
-      String playertype = input.giveInput();
+      form[6] = input.giveInput();
+      System.out.print("\n1: Aktiv\n2: Passiv\n\nMedlemstype: ");
+      form[7] = input.giveInput();
+      System.out.print("\n1: Spiller for sjov\n2: Tourneringsspiller\n\nSpillertype : ");
+      form[8] = input.giveInput();
       System.out.print("Rating : ");
-      String rating = input.giveInput();
+      form[9] = input.giveInput();
       System.out.print("ELO : ");
-      String elo = input.giveInput();
+      form[10] = input.giveInput();
 
-      memberManage.addMember(CPR, firstname, lastname, birthday, address, phonenumber,
-                    email, rating, elo, memberstatus, playertype);
+			if(!memberManage.addMember(form)){
+				ui.wrongInput();
+			} else {
+				ui.promptEnterMessage();
+			}
 
-
-      ui.promptEnterMessage();
     }
 
     public void chairmanUpdate (){
-  		System.out.println("Hvilket medlem ønsker du at opdatere?");
-  		System.out.print("Medlems ID: ");
-      String ID = input.giveInput();
-    	}
+  		System.out.println("\nHvilket medlem ønsker du at opdatere?");
+  		System.out.print("\nMedlems ID: ");
+      String memberID = input.giveInput();
+			System.out.println("\nHvilket felt vil du opdatere?\n ");
+			System.out.println("1. Navn\n2. Efternavn\n3. Adresse\n4. Fødselsdag\n5. Telefon\n6. e-mail\n7. medlemstype\n8. Spillertype\n9. Rating\n10. ELO");
+			ui.input();
+			String field = input.giveInput();
+
+			if(!memberManage.updateMember(memberID, field)) {
+				ui.wrongInput();
+			} else {
+				ui.promptEnterMessage();
+			}
+
+    }
 
 		public void chairmanRemove (){
 			System.out.println("Indtast ID på det medlem du ønsker at fjerne.");
