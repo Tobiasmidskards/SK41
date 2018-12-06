@@ -165,15 +165,15 @@ public class Program{
 			String[] form = new String[11];
 
       System.out.println("\nDu er ved at oprette en bruger i systemet. \nIndtast venligst følgende oplysninger:\n");
-      System.out.print("Navn: ");
+			System.out.print("CPR-nummer (xxxxxxxxxx): ");
       form[0] = input.giveInput();
-      System.out.print("Efternavn: ");
+			System.out.print("Navn: ");
       form[1] = input.giveInput();
-      System.out.print("Addresse: ");
+			System.out.print("Efternavn: ");
       form[2] = input.giveInput();
-      System.out.print("CPR-nummer (xxxxxxxxxx): ");
+			System.out.print("Fødselsdag (ddmmyyyy): ");
       form[3] = input.giveInput();
-      System.out.print("Fødselsdag (ddmmyyyy): ");
+			System.out.print("Addresse: ");
       form[4] = input.giveInput();
       System.out.print("Telefon: ");
       form[5] = input.giveInput();

@@ -59,17 +59,26 @@ public class MemberManage{
 		memberWriter = filehandler.printFile("db/members.tsv");
 		accountWriter = filehandler.printFile("db/accounting.tsv");
 
-		line = "";
+		int userID = filehandler.nextID();
+
+		line = userID + "\t";
 
 		for(int i = 0; i < form.length; i++){
+
 			if(form[i].equals("")){
 				return false;
+			}
+			if (i == 7 || i == 8 ){
+
 			} else {
 				line += form[i] + "\t";
 			}
 		}
 
-    int userID = filehandler.nextID();
+
+
+
+		System.out.println(userID);
 
     memberWriter.println(line);
     memberWriter.flush();
@@ -78,8 +87,8 @@ public class MemberManage{
 		String dateFormat = String.format("%1$tY-%1$tm-%1$td", date);
     String debt = "0";
 
-		String memberstatus = form[9];
-		String playertype = form[10];
+		String memberstatus = form[7];
+		String playertype = form[8];
 
     if(playertype.equals("1")){
       playertype = "funPlayer";
@@ -117,7 +126,7 @@ public class MemberManage{
 			String[] line = scanner.nextLine().split("\\t");
 			if(memberID.equals(line[0])){
 
-				filehandler.removeRow(memberID, "db/members.tsv")
+				//filehandler.removeRow(memberID, "db/members.tsv")
 
 				switch(field){
 					case "1":

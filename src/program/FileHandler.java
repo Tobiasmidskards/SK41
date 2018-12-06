@@ -49,7 +49,7 @@ public class FileHandler{
 
 			printWriter.println("SK 41 JUNIOR MEDLEMMER. \nUdarbejdet d. " + dateFormat + ".\n");
     	printWriter.print("Klubben har følgende junior medlemmer: \n\n");
-			System.out.println(juniorMembers);
+
 			for (ArrayList<String> member : juniorMembers){
 
 					printWriter.printf("%s  -  %s %s\n", member.get(1), member.get(2), member.get(3));
