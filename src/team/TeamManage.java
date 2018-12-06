@@ -43,7 +43,6 @@ public class TeamManage{
 			for (String values : accountingLine){
 				currentMember.add(values);
 			}
-			System.out.println(currentMember.get(12));
 			if (currentMember.get(12).equals("tournamentPlayer")) {
 				allMembers.add(currentMember);
 			}
