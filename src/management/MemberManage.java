@@ -7,6 +7,8 @@ import java.util.*;
 
 public class MemberManage{
 
+	private ArrayList<ArrayList<String>> allMembers;
+	private ArrayList<String> currentMember;
   private Member temporaryMember;
   private FileHandler filehandler;
   private PrintWriter memberWriter;
@@ -55,6 +57,7 @@ public class MemberManage{
   }
 
   public boolean addMember(String[] form){
+
 
 		memberWriter = filehandler.printFile("db/members.tsv");
 		accountWriter = filehandler.printFile("db/accounting.tsv");
@@ -113,63 +116,60 @@ public class MemberManage{
 		return true;
   }
 
-  public boolean updateMember(String memberID, String field){
+  public boolean updateMember(String memberID, String fieldNumber){
 
-		Scanner scanner = new Scanner(System.in);
+			// ArrayList<ArrayList<String>> allMembers = new ArrayList<ArrayList<String>>();
+			// ArrayList<ArrayList<String>> currentMember = new ArrayList<String>();
+			// FileHandler fileHandler = new FileHandler();
+			//
+			// Scanner memberFile = fileHandler.openFile("db/members.tsv");
+			// Scanner accountingFile = fileHandler.openFile("db/accounting.tsv");
+			//
+			// String memberColumnNames = memberFile.nextLine();
+			// String accountingColumnNames = memberFile.nextLine();
 
-		memberWriter = filehandler.printFile("db/members.tsv");
-		accountWriter = filehandler.printFile("db/accounting.tsv");
+			return true;
 
-		scanner = filehandler.openFile("db/members.tsv");
 
-		while(scanner.hasNextLine()){
-			String[] line = scanner.nextLine().split("\\t");
-			if(memberID.equals(line[0])){
+  }
 
-				//filehandler.removeRow(memberID, "db/members.tsv")
+	public String oldValue(String memberID, String fieldNumber){
+		ArrayList<String> currentMember = new ArrayList<String>();
+		FileHandler fileHandler = new FileHandler();
 
-				switch(field){
-					case "1":
-						line[2] = scanner.nextLine();
-						break;
-					case "2":
-						line[3] = scanner.nextLine();
-						break;
-					case "3":
-						line[5] = scanner.nextLine();
-						break;
-					case "4":
-						line[4] = scanner.nextLine();
-						break;
-					case "5":
-						line[6] = scanner.nextLine();
-						break;
-					case "6":
-						line[7] = scanner.nextLine();
-						break;
-					case "7":
-						break;
-					case "8":
-						break;
-					case "9":
-						line[8] = scanner.nextLine();
-						break;
-					case "10":
-						line[9] = scanner.nextLine();
-						break;
-					default:
-						return false;
+		Scanner memberFile = fileHandler.openFile("db/members.tsv");
+		Scanner accountingFile = fileHandler.openFile("db/accounting.tsv");
 
+		String memberColumnNames = memberFile.nextLine();
+		String accountingColumnNames = memberFile.nextLine();
+
+		while (memberFile.hasNextLine()){
+
+			String[] memberLine = memberFile.nextLine().split("\\t");
+
+			if (memberLine[0].equals(memberID)){
+				for (String line : memberLine){
+					currentMember.add(line);
+
+				}
+				while (accountingFile.hasNextLine()){
+
+					String[] accountingLine = accountingFile.nextLine().split("\\t");
+
+					if (memberLine[0].equals(accountingLine[0])){
+						for (String line : accountingLine) {
+							currentMember.add(line);
+						}
+
+					}
+
+				}
 			}
 
-		}
-
-
 
 		}
-
-		return false;
-  }
+		return currentMember.get(Integer.parseInt(fieldNumber)+1);
+	}
 
   public void deleteMember(String memberID){
 		if(filehandler.removeRow(memberID, "db/members.tsv")){
