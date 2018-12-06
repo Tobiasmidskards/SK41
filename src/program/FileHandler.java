@@ -35,6 +35,54 @@ public class FileHandler{
     return scanner;
   }
 
+	public void writeNewTeams(String fileName, ArrayList<ArrayList<String>> teamMembers){
+		try {
+			Integer teamCounter = 0;
+			FileWriter fileWriter = new FileWriter(fileName);
+    	PrintWriter printWriter = new PrintWriter(fileWriter);
+
+			Date date = new Date();
+			String dateFormat = String.format("%1$td.%1$tm-%1$tY", date);
+
+			String indent = "                                         ";
+
+			printWriter.println("SKAK KLUB 41 NYE HOLD. \nUdarbejdet d. " + dateFormat + ".\n");
+    	printWriter.print("Holdene er opsat som følgende: \n");
+
+			for (ArrayList<String> member : teamMembers){
+
+					if (teamCounter <= 2) {
+						if (teamCounter == 0) {
+							printWriter.printf("\nFØRSTE HOLDET:\n");
+						}
+							printWriter.printf("%s %s - %s rating.\n", member.get(2), member.get(3), member.get(8));
+
+
+					} else if (teamCounter > 2 || teamCounter <= 5) {
+						if (teamCounter == 3) {
+							printWriter.printf("\nANDET HOLDET:\n");
+						}
+						printWriter.printf("%s %s - %s rating.\n", member.get(2), member.get(3), member.get(8));
+
+
+					} else if (teamCounter > 5 ) {
+						if (teamCounter == 6) {
+							printWriter.printf("\nTREDJE HOLDET:\n");
+						}
+						printWriter.printf("%s %s - %s rating.\n", member.get(2), member.get(3), member.get(8));
+
+
+					}
+					teamCounter++;
+
+			}
+
+    	printWriter.close();
+		} catch (IOException e) {
+
+		}
+	}
+
 	public void writeMissedPayment(String fileName, ArrayList<ArrayList<String>> allMembers){
 		try {
 			int totalMissing = 0;
@@ -48,7 +96,7 @@ public class FileHandler{
 
 			printWriter.println("Rapport for medlemmer i restance. \nUdarbejdet d. " + dateFormat + ".\n\n");
     	printWriter.print("Følgende medlemmer mangler at betale: \n\n");
-			
+
 			for (ArrayList<String> member : allMembers){
 
 					String name = member.get(7) + " " + member.get(8);
