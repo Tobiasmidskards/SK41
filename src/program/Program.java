@@ -204,11 +204,13 @@ public class Program{
 			System.out.println("1. Navn\n2. Efternavn\n3. Adresse\n4. Fødselsdag\n5. Telefon\n6. e-mail\n7. medlemstype\n8. Spillertype\n9. Rating\n10. ELO");
 			ui.input();
 			String field = input.giveInput();
-			System.out.println("Hvad ønsker du at ændre til?");
-			System.out.printf("Før:%s", memberManage.oldValue(memberID, field));
+			System.out.println("\nHvad ønsker du at ændre til?");
+			System.out.printf("\nNuværende: %s\n", memberManage.oldValue(memberID, field));
+			System.out.println("\nDu bedes nu indaste den nye oplysning.");
+			ui.input();
 			String newField = input.giveInput();
 
-			if(!memberManage.updateMember(memberID, field)) {
+			if(!memberManage.updateMember(memberID, field, newField)) {
 				ui.wrongInput();
 			} else {
 				ui.promptEnterMessage();

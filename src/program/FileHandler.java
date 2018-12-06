@@ -144,10 +144,11 @@ public class FileHandler{
 		}
 	}
 
-	public int nextID(){
-		int newID = 0;
+	public String nextID(){
+		String newID = "";
 		scanner = openFile("program/config.conf");
-		newID = Integer.parseInt(scanner.nextLine())+1;
+		int newIDplus = Integer.parseInt(scanner.nextLine())+1;
+		newID += newIDplus;
 
 
 		try{
