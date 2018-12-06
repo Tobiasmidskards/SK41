@@ -250,7 +250,8 @@ public class Program{
           state = MenuState.TEAM2;
           break;
         case "2":
-          playerByRating();
+					teamManage.allMemberRatings();
+					ui.promptEnterMessage();
           break;
 				case "3":
 					teamManage.createNewTeams();
@@ -289,11 +290,6 @@ public class Program{
 					break;
 
       }
-    }
-    public void playerByRating(){
-      System.out.println("Indtast medlemmets rating");
-      System.out.print("Rating: ");
-      String ID = input.giveInput();
     }
 
     public void blitzChess(){

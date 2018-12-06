@@ -67,7 +67,7 @@ public class UI{
 	public void teamleader(){
 		top();
 		System.out.print("\nHoldhåndtering\n");
-		System.out.print("\n1. Skakmode\n2. Find medlem på rating\n3. Opret styrkeliste\n4. Tilbage\n");
+		System.out.print("\n1. Skakmode\n2. Se medlemmers rating\n3. Opret styrkeliste\n4. Tilbage\n");
 		bot();
 		input();
 	}

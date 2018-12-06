@@ -18,6 +18,24 @@ public class TeamManage{
 
 	}
 
+	public void allMemberRatings() {
+
+		FileHandler fileHandler = new FileHandler();
+
+		Scanner memberFile = fileHandler.openFile("db/members.tsv");
+
+		String memberColumnNames = memberFile.nextLine();
+
+		while(memberFile.hasNextLine()) {
+			ArrayList<String> currentMember = new ArrayList<String>();
+			String[] memberLine = memberFile.nextLine().split("\\t");
+
+			System.out.printf("%s %s - %s rating / %s ELO.\n", memberLine[2],memberLine[3], memberLine[8], memberLine[9]);
+
+
+		}
+	}
+
 	public void createNewTeams() {
 
 		ArrayList<ArrayList<String>> allMembers = new ArrayList<ArrayList<String>>();
