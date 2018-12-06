@@ -217,7 +217,8 @@ public class Program{
           ui.promptEnterMessage();
           break;
         case"2":
-          findJuniorMem();
+          accountManage.findJuniorMembers();
+					ui.promptEnterMessage();
           break;
         case"3":
 					state = MenuState.LOGIN;

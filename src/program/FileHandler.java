@@ -35,6 +35,35 @@ public class FileHandler{
     return scanner;
   }
 
+
+
+	public void createJuniorMembers(String fileName, ArrayList<ArrayList<String>> juniorMembers){
+		try {
+			FileWriter fileWriter = new FileWriter(fileName);
+    	PrintWriter printWriter = new PrintWriter(fileWriter);
+
+			Date date = new Date();
+			String dateFormat = String.format("%1$td.%1$tm-%1$tY", date);
+
+			String indent = "                                         ";
+
+			printWriter.println("SK 41 JUNIOR MEDLEMMER. \nUdarbejdet d. " + dateFormat + ".\n");
+    	printWriter.print("Klubben har følgende junior medlemmer: \n\n");
+			System.out.println(juniorMembers);
+			for (ArrayList<String> member : juniorMembers){
+
+					printWriter.printf("%s  -  %s %s\n", member.get(1), member.get(2), member.get(3));
+					printWriter.printf("Adresse: %s\n", member.get(5));
+					printWriter.printf("Telefon: %s\n\n", member.get(6));
+
+			}
+
+    	printWriter.close();
+		} catch (IOException e) {
+
+		}
+	}
+
 	public void writeNewTeams(String fileName, ArrayList<ArrayList<String>> teamMembers){
 		try {
 			Integer teamCounter = 0;
