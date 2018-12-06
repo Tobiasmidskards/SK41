@@ -35,6 +35,83 @@ public class FileHandler{
     return scanner;
   }
 
+
+
+	public void createJuniorMembers(String fileName, ArrayList<ArrayList<String>> juniorMembers){
+		try {
+			FileWriter fileWriter = new FileWriter(fileName);
+    	PrintWriter printWriter = new PrintWriter(fileWriter);
+
+			Date date = new Date();
+			String dateFormat = String.format("%1$td.%1$tm-%1$tY", date);
+
+			String indent = "                                         ";
+
+			printWriter.println("SK 41 JUNIOR MEDLEMMER. \nUdarbejdet d. " + dateFormat + ".\n");
+    	printWriter.print("Klubben har følgende junior medlemmer: \n\n");
+			System.out.println(juniorMembers);
+			for (ArrayList<String> member : juniorMembers){
+
+					printWriter.printf("%s  -  %s %s\n", member.get(1), member.get(2), member.get(3));
+					printWriter.printf("Adresse: %s\n", member.get(5));
+					printWriter.printf("Telefon: %s\n\n", member.get(6));
+
+			}
+
+    	printWriter.close();
+		} catch (IOException e) {
+
+		}
+	}
+
+	public void writeNewTeams(String fileName, ArrayList<ArrayList<String>> teamMembers){
+		try {
+			Integer teamCounter = 0;
+			FileWriter fileWriter = new FileWriter(fileName);
+    	PrintWriter printWriter = new PrintWriter(fileWriter);
+
+			Date date = new Date();
+			String dateFormat = String.format("%1$td.%1$tm-%1$tY", date);
+
+			String indent = "                                         ";
+
+			printWriter.println("SKAK KLUB 41 NYE HOLD. \nUdarbejdet d. " + dateFormat + ".\n");
+    	printWriter.print("Holdene er opsat som følgende: \n");
+
+			for (ArrayList<String> member : teamMembers){
+
+					if (teamCounter <= 2) {
+						if (teamCounter == 0) {
+							printWriter.printf("\nFØRSTE HOLDET:\n");
+						}
+							printWriter.printf("%s %s - %s rating.\n", member.get(2), member.get(3), member.get(8));
+
+
+					} else if (teamCounter > 2 || teamCounter <= 5) {
+						if (teamCounter == 3) {
+							printWriter.printf("\nANDET HOLDET:\n");
+						}
+						printWriter.printf("%s %s - %s rating.\n", member.get(2), member.get(3), member.get(8));
+
+
+					} else if (teamCounter > 5 ) {
+						if (teamCounter == 6) {
+							printWriter.printf("\nTREDJE HOLDET:\n");
+						}
+						printWriter.printf("%s %s - %s rating.\n", member.get(2), member.get(3), member.get(8));
+
+
+					}
+					teamCounter++;
+
+			}
+
+    	printWriter.close();
+		} catch (IOException e) {
+
+		}
+	}
+
 	public void writeMissedPayment(String fileName, ArrayList<ArrayList<String>> allMembers){
 		try {
 			int totalMissing = 0;

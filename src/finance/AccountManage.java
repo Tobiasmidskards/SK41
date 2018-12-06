@@ -3,6 +3,7 @@ package finance;
 import java.util.*;
 import java.io.*;
 import java.time.*;
+import java.text.*;
 import program.*;
 
 import java.util.Calendar;
@@ -19,6 +20,47 @@ public class AccountManage{
 	private ArrayList<String> currentMember;
 
 	public AccountManage(){
+
+	}
+	public void findJuniorMembers(){
+
+		ArrayList<ArrayList<String>> allMembers = new ArrayList<ArrayList<String>>();
+
+		FileHandler fileHandler = new FileHandler();
+
+		Scanner memberFile = fileHandler.openFile("db/members.tsv");
+
+		String memberColumnNames = memberFile.nextLine();
+
+		Integer bornYear = 0;
+
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat yearFormat = new SimpleDateFormat("yyyy");
+		Date date = new Date();
+
+		while (memberFile.hasNextLine()) {
+
+			ArrayList<String> currentMember = new ArrayList<String>();
+			String[] memberLine = memberFile.nextLine().split("\\t");
+
+			bornYear = Integer.parseInt(memberLine[4].substring(4));
+
+			if ((Integer.parseInt(yearFormat.format(date)) - bornYear) < 18){
+				for (String line : memberLine) {
+					currentMember.add(line);
+				}
+				allMembers.add(currentMember);
+			}
+
+
+		}
+
+		fileHandler.createJuniorMembers("JuniorMedlemmer(" +
+					String.valueOf(dateFormat.format(date)) + ").txt", allMembers);
+
+		System.out.println("\nInfo: Dokumentet \"JuniorMedlemmer(" +
+					String.valueOf(dateFormat.format(date)) + ").txt\" er nu oprettet." );
+
 
 	}
 

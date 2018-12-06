@@ -26,6 +26,7 @@ public class Program{
       input = new InputHandler();
       login = new LoginVerifyer();
 			accountManage = new AccountManage();
+			teamManage = new TeamManage();
 			ui = new UI();
       memberManage = new MemberManage();
 			state = MenuState.LOGIN;
@@ -230,7 +231,8 @@ public class Program{
           ui.promptEnterMessage();
           break;
         case"2":
-          findJuniorMem();
+          accountManage.findJuniorMembers();
+					ui.promptEnterMessage();
           break;
         case"3":
 					state = MenuState.LOGIN;
@@ -263,9 +265,14 @@ public class Program{
           state = MenuState.TEAM2;
           break;
         case "2":
-          playerByRating();
+					teamManage.allMemberRatings();
+					ui.promptEnterMessage();
           break;
-        case "3":
+				case "3":
+					teamManage.createNewTeams();
+					ui.promptEnterMessage();
+					break;
+        case "4":
 					state = MenuState.LOGIN;
           break;
 				default:
@@ -298,11 +305,6 @@ public class Program{
 					break;
 
       }
-    }
-    public void playerByRating(){
-      System.out.println("Indtast medlemmets rating");
-      System.out.print("Rating: ");
-      String ID = input.giveInput();
     }
 
     public void blitzChess(){
