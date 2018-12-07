@@ -42,23 +42,20 @@ public class AccountManage{
 
 			ArrayList<String> currentMember = new ArrayList<String>();
 			String[] memberLine = memberFile.nextLine().split("\\t");
+			if (memberLine[0].equals("\\N")) {
 
+			} else { 
 			bornYear = Integer.parseInt(memberLine[4].substring(4));
 
 			if ((Integer.parseInt(yearFormat.format(date)) - bornYear) < 18){
 				for (String line : memberLine) {
-					if (line.equals("\\N")) {
-
-					} else {
-						currentMember.add(line);
-
-					}
-
+					currentMember.add(line);
 				}
 				allMembers.add(currentMember);
 			}
 
 
+		}
 		}
 
 		fileHandler.createJuniorMembers("JuniorMedlemmer(" +
