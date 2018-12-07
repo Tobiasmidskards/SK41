@@ -67,15 +67,7 @@ public class UI{
 	public void teamleader(){
 		top();
 		System.out.print("\nHoldhåndtering\n");
-		System.out.print("\n1. Skakmode\n2. Se medlemmers rating\n3. Opret styrkeliste\n4. Tilbage\n");
-		bot();
-		input();
-	}
-
-	public void teamleaderChess(){
-		top();
-		System.out.print("\nHold Menu\n");
-		System.out.print("\n1. Lynskak\n2. Hurtigskak\n3. Standard tuneringsskak\n4. Korrespondanceskak\n5. Tilbage\n");
+		System.out.print("\n1. Se medlemmers rating\n2. Opret styrkeliste\n3. Tilbage\n");
 		bot();
 		input();
 	}

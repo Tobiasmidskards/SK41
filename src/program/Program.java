@@ -56,9 +56,6 @@ public class Program{
 					case TEAM:
 						teamleaderMenu();
 						break;
-					case TEAM2:
-						teamleaderPromt();
-						break;
 				}
       }
 
@@ -249,17 +246,6 @@ public class Program{
 					break;
       }
     }
-    public void accountantUnpaid(){
-      System.out.println("Indtast ID på det ønskede medlem.");
-      System.out.print("Medlems ID: ");
-      String ID = input.giveInput();
-    }
-
-    public void findJuniorMem(){
-      System.out.println("Indtast ID på det ønskede medlem.");
-      System.out.print("Medlems ID: ");
-      String ID = input.giveInput();
-    }
 
 
     public void teamleaderMenu(){
@@ -268,53 +254,19 @@ public class Program{
 
       switch(inputString){
         case "1":
-					ui.clear();
-          state = MenuState.TEAM2;
-          break;
-        case "2":
 					teamManage.allMemberRatings();
 					ui.promptEnterMessage();
           break;
-				case "3":
+				case "2":
 					teamManage.createNewTeams();
 					ui.promptEnterMessage();
 					break;
-        case "4":
+        case "3":
 					state = MenuState.LOGIN;
           break;
 				default:
 					ui.wrongInput();
 					break;
       }
-    }
-    public void teamleaderPromt(){
-      ui.teamleaderChess();
-      inputString = input.giveInput();
-
-      switch (inputString) {
-        case "1":
-
-          break;
-        case "2":
-
-          break;
-        case "3":
-
-          break;
-				case "4":
-
-					break;
-				case "5":
-					state = MenuState.TEAM;
-					break;
-				default:
-					ui.wrongInput();
-					break;
-
-      }
-    }
-
-    public void blitzChess(){
-      System.out.println("Indtast venligst ");
     }
 }
