@@ -115,7 +115,8 @@ public class MemberManage{
   }
 
   public boolean updateMember(String memberID, String fieldNumber, String newField){
-			String[] currentMember = new String[15];
+			String[] currentMember = new String[10];
+			String[] currentMember2 = new String[5];
 			FileHandler fileHandler = new FileHandler();
 
 			Scanner memberFile = fileHandler.openFile("db/members.tsv");
@@ -131,14 +132,9 @@ public class MemberManage{
 
 				if (memberLine[0].equals(memberID)){
 
-					fileHandler.removeRow(memberID, "db/members.tsv");
-					fileHandler.removeRow(memberID, "db/accounting.tsv");
-
 
 					for(h = 0; h < memberLine.length;h++){
 						currentMember[h] = memberLine[h];
-
-
 					}
 
 					while (accountingFile.hasNextLine()){
@@ -148,47 +144,56 @@ public class MemberManage{
 						if (accountingLine[0].equals(memberID)){
 
 							for(int j = 0; j < accountingLine.length; j++){
-								currentMember[h] = accountingLine[j];
-								h++;
+								currentMember2[j] = accountingLine[j];
 							}
 
-						}
+							fileHandler.removeRow(memberID, "db/members.tsv");
+							fileHandler.removeRow(memberID, "db/accounting.tsv");
 
+							memberWriter = filehandler.printFile("db/members.tsv");
+
+							if(fieldNumber.equals("9")){
+								currentMember2[1] = newField;
+							} else if(fieldNumber.equals("10")){
+								currentMember2[2] = newField;
+							} else {
+								currentMember[Integer.parseInt(fieldNumber)+1] = newField;
+							}
+
+							line = "";
+
+							for(int i = 0; i < currentMember.length; i++){
+									line += currentMember[i] + "\t";
+							}
+
+							memberWriter.println(line);
+							memberWriter.flush();
+							memberWriter.close();
+
+
+							fileHandler = new FileHandler();
+
+							accountWriter = filehandler.printFile("db/accounting.tsv");
+
+							line = "";
+
+							for(int j = 0; j < currentMember2.length; j++){
+									line += currentMember2[j] + "\t";
+							}
+
+							accountWriter.println(line);
+							accountWriter.flush();
+							accountWriter.close();
+
+							return true;
+						}
 					}
 				}
-
-
 			}
 
-			currentMember[Integer.parseInt(fieldNumber)+1] = newField;
 
-			memberWriter = filehandler.printFile("db/members.tsv");
 
-			line = "";
-
-			for(int i = 0; i < currentMember.length-5; i++){
-					line += currentMember[i] + "\t";
-			}
-
-			fileHandler = new FileHandler();
-
-			memberWriter.println(line);
-			memberWriter.flush();
-			memberWriter.close();
-
-			accountWriter = filehandler.printFile("db/accounting.tsv");
-
-			line = "";
-
-			for(int j = 10; j < currentMember.length; j++){
-					line += currentMember[j] + "\t";
-			}
-
-			accountWriter.println(line);
-			accountWriter.flush();
-			memberWriter.close();
-
-			return true;
+			return false;
 
 
   }
@@ -228,7 +233,18 @@ public class MemberManage{
 
 
 		}
-		return currentMember.get(Integer.parseInt(fieldNumber)+1);
+
+		String retval;
+
+		if(fieldNumber.equals("9")){
+			retval = currentMember.get(11);
+		} else if(fieldNumber.equals("10")){
+			retval = currentMember.get(12);
+		} else {
+			retval = currentMember.get(Integer.parseInt(fieldNumber)+1);
+		}
+
+		return retval;
 	}
 
   public void deleteMember(String memberID){

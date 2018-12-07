@@ -201,7 +201,7 @@ public class Program{
   		System.out.print("\nMedlems ID: ");
       String memberID = input.giveInput();
 			System.out.println("\nHvilket felt vil du opdatere?\n ");
-			System.out.println("1. Navn\n2. Efternavn\n3. Adresse\n4. Fødselsdag\n5. Telefon\n6. e-mail\n7. medlemstype\n8. Spillertype\n9. Rating\n10. ELO");
+			System.out.println("1. Navn\n2. Efternavn\n3. Adresse\n4. Fødselsdag\n5. Telefon\n6. e-mail\n7. Rating\n8. ELO\n9. Spillertype\n10. Medlemstype");
 			ui.input();
 			String field = input.giveInput();
 			System.out.println("\nHvad ønsker du at ændre til?");

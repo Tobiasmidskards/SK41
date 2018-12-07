@@ -5,7 +5,9 @@ userID	userStatus	userPlayerType	dateOfMembership	debt	update
 4	passive	tournamentPlayer	2017-12-05	-1001
 5	active	funPlayer	2017-12-05	2
 6	passive	tournamentPlayer	2017-12-05	-10
-7	active	funPlayer	2017-12-05	231
+\N	ctive	funPlayer	2017-12-05	231
 8	passive	tournamentPlayer	2017-12-05	10
-9	active	funPlayer	2017-12-05	-100
+\N	ctive	funPlayer	2017-12-05	-100
 10	active	funPlayer	2017-12-05	-100
+9	activeplayer	funPlayer	2017-12-05	-100	
+7	passive	funPlayer	2017-12-05	231	
