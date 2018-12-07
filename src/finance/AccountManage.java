@@ -47,7 +47,13 @@ public class AccountManage{
 
 			if ((Integer.parseInt(yearFormat.format(date)) - bornYear) < 18){
 				for (String line : memberLine) {
-					currentMember.add(line);
+					if (line.equals("\\N")) {
+
+					} else {
+						currentMember.add(line);
+
+					}
+
 				}
 				allMembers.add(currentMember);
 			}
