@@ -29,8 +29,12 @@ public class TeamManage{
 		while(memberFile.hasNextLine()) {
 			ArrayList<String> currentMember = new ArrayList<String>();
 			String[] memberLine = memberFile.nextLine().split("\\t");
+			if (memberLine[0].equals("\\N")) {
+				continue;
+			} else {
+				System.out.printf("%s %s - %s rating / %s ELO.\n", memberLine[2],memberLine[3], memberLine[8], memberLine[9]);
+			}
 
-			System.out.printf("%s %s - %s rating / %s ELO.\n", memberLine[2],memberLine[3], memberLine[8], memberLine[9]);
 
 
 		}

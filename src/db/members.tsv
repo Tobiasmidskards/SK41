@@ -7,10 +7,10 @@ userID	CPR	firstName	lastName	dateOfBirth	address	phoneNumber	email	rating	elo
 6	01239****	August	Andersen	30122001	Lundevænget 22	37485936	augustandersen@dayrep.com	1231	1543
 7	506653****	Marius	Schmidt	05061965	Vestergade 91	47362514	mariussmidt@hotmail.dk	1543	3547
 8	01883****	Filippa	Mikkelsen	15011988	Jernbanegade 17	37284956	filippamikkelsen@gmail.com	1231	3424
-9	90658****	Frederikke	Schou	29061958	Gartnervænget 39	47383946	frederikkeschou@hotmail.dk	3424	3547
+10	90658****	Frederikke	Schou	29061958	Gartnervænget 39	47383946	frederikkeschou@hotmail.dk	9999	3547
 \N	261175****	lort	Kristiansen	26111975	Kongshøj Allé 86	37483935	johankristiansen@gmail.com	3424	1231
-\N	261175****	lort	Kristiansen	1207951995	Kongshøj Allé 86	37483935	johankristiansen@gmail.com	3424	1231	
-\N	261175****	lort	Kristiansen	1207951995	OSTEVEJ 10	37483935	johankristiansen@gmail.com	3424	1231	
-\N	261175****	lort	Kristiansen	1207951995	OSTEVEJ 10	37483935	johankristiansen@gmail.com	3424	1231	
-\N	261175****	lort	Kristiansen	1207951995	OSTEVEJ 10	37483935	johankristiansen@gmail.com	3424	1231	
-10	261175****	lort	Kristiansen	1207951995	OSTEVEJ 10	37483935	johankristiansen@gmail.com	3424	9999	
+\N	261175****	lort	Kristiansen	1207951995	Kongshøj Allé 86	37483935	johankristiansen@gmail.com	3424	1231
+\N	261175****	lort	Kristiansen	1207951995	OSTEVEJ 10	37483935	johankristiansen@gmail.com	3424	1231
+\N	261175****	lort	Kristiansen	1207951995	OSTEVEJ 10	37483935	johankristiansen@gmail.com	3424	1231
+\N	261175****	lort	Kristiansen	1207951995	OSTEVEJ 10	37483935	johankristiansen@gmail.com	3424	1231
+9	261175****	lort	Kristiansen	1207951995	OSTEVEJ 10	37483935	johankristiansen@gmail.com	8888	9999
