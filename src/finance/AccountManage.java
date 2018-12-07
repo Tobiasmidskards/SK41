@@ -44,7 +44,7 @@ public class AccountManage{
 			String[] memberLine = memberFile.nextLine().split("\\t");
 			if (memberLine[0].equals("\\N")) {
 
-			} else { 
+			} else {
 			bornYear = Integer.parseInt(memberLine[4].substring(4));
 
 			if ((Integer.parseInt(yearFormat.format(date)) - bornYear) < 18){
@@ -140,6 +140,9 @@ public class AccountManage{
 				String[] accountingLine = accountingFile.nextLine().split("\\t");
 
 				if (Integer.parseInt(accountingLine[4]) < 0) {
+					if (accountingLine[0].equals("\\N")) {
+
+					} else {
 
 					Scanner memberFile = fileHandler.openFile("db/members.tsv");
 					String memberColumnNames = memberFile.nextLine();
@@ -164,6 +167,7 @@ public class AccountManage{
 					}
 				}
 			}
+		}
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
