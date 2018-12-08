@@ -10,7 +10,6 @@ import management.*;
 public class LoginVerifyer{
 
   private FileHandler fileHandler;
-	private FileHandler fileHandler1;
 
   private User user;
 
@@ -18,7 +17,6 @@ public class LoginVerifyer{
     // Vi initializere de klasser vi skal bruge i konstructoren.
 
     fileHandler = new FileHandler();
-		fileHandler1 = new FileHandler();
 
     // Ingen bruger er logged in. Derfor kalder vi en tom konstructor. (som sætter user.userID = -1);
     user = new User();
@@ -36,19 +34,19 @@ public class LoginVerifyer{
     // sætter en variabel, så vi kan stoppe med at søge hvis vi har fundet loginoplysningerne i databasen.
     boolean succes = false;
 
-    // Smækker en scanner på vores databsefil.
+    // Smækker en scanner på vores databasefil.
     Scanner loginFile = fileHandler.openFile("db/login.tsv");
-
 
     // Den første linie vil være navnene på kolonnerne, så vi hopper lige den linie over.
     loginFile.nextLine();
+
     // Hvis der er flere linier OG vi ikke hare fundet personen endnu, så kører whileloopet.
     while(loginFile.hasNextLine() && !succes) {
       // Splitter den linie vi er på op i et array, hvor der tabs.
       // F.eks. "hej med dig" = ["hej", "med", "dig"].
       // Så loginLine[0] vil være = "hej"
-
       String[] loginLine = loginFile.nextLine().split("\\t");
+
       // Hvis vi har fundet username, kan vi begynde at tjekke passwordet.
       if(username.equals(loginLine[1])){
 
@@ -63,7 +61,7 @@ public class LoginVerifyer{
           System.out.println("\nInfo: Du er nu logged ind.");
 
 					// Smækker en scanner på vores databsefil.
-					Scanner memberFile = fileHandler1.openFile("db/members.tsv");
+					Scanner memberFile = fileHandler.openFile("db/members.tsv");
 
 					// Den første linie vil være navnene på kolonnerne, så vi hopper lige den linie over.
 					memberFile.nextLine();
@@ -90,7 +88,7 @@ public class LoginVerifyer{
 						}
 					}
 
-
+					// sætter typen på ham der er logged in, baseret på den string der er i databasen.
           switch(Integer.parseInt(loginLine[3])) {
             case 0:
               user.setUserType(UserType.CHAIRMAN);
@@ -103,9 +101,13 @@ public class LoginVerifyer{
               break;
           }
 
+					// succes, der er en som er logged ind!
+					// stop funktionen.
           return true;
 
         } else {
+
+					// Vi kunne ikke finde passwordet i vores login.txt
           System.out.println("\nFejl: Forkert password. Prøv igen.");
           return false;
         }
@@ -114,6 +116,7 @@ public class LoginVerifyer{
 
     }
 
+		// Vi kunne ikke finde brugernavnet i vores login.txt
     System.out.println("\nFejl: Der findes ingen bruger: " + username + ".");
 
     // byte[] encodedBytes1 = Base64.getEncoder().encode(loginLine[2].getBytes());
@@ -121,7 +124,6 @@ public class LoginVerifyer{
 
     // byte[] decodedBytes1 = Base64.getDecoder().decode(encodedBytes1);
     // byte[] decodedBytes2 = Base64.getDecoder().decode(encodedBytes2);
-
 
     return false;
 

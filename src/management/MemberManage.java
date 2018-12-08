@@ -123,7 +123,7 @@ public class MemberManage{
 			Scanner accountingFile = fileHandler.openFile("db/accounting.tsv");
 
 			memberFile.nextLine();
-			memberFile.nextLine();
+			accountingFile.nextLine();
 
 			while (memberFile.hasNextLine()){
 				int h;
@@ -185,9 +185,12 @@ public class MemberManage{
 							accountWriter.flush();
 							accountWriter.close();
 
+							System.out.printf("\nInfo: Bruger med ID [%s] er nu blevet opdateret.\n", currentMember[0]);
+
 							return true;
 						}
 					}
+
 				}
 			}
 
@@ -205,8 +208,10 @@ public class MemberManage{
 		Scanner memberFile = fileHandler.openFile("db/members.tsv");
 		Scanner accountingFile = fileHandler.openFile("db/accounting.tsv");
 
-		String memberColumnNames = memberFile.nextLine();
-		String accountingColumnNames = memberFile.nextLine();
+		memberFile.nextLine();
+		accountingFile.nextLine();
+
+		String retval = "";
 
 		while (memberFile.hasNextLine()){
 
@@ -226,6 +231,14 @@ public class MemberManage{
 							currentMember.add(line);
 						}
 
+						if(fieldNumber.equals("9")){
+							retval = currentMember.get(11);
+						} else if(fieldNumber.equals("10")){
+							retval = currentMember.get(12);
+						} else {
+							retval = currentMember.get(Integer.parseInt(fieldNumber)+1);
+						}
+
 					}
 
 				}
@@ -234,15 +247,6 @@ public class MemberManage{
 
 		}
 
-		String retval;
-
-		if(fieldNumber.equals("9")){
-			retval = currentMember.get(11);
-		} else if(fieldNumber.equals("10")){
-			retval = currentMember.get(12);
-		} else {
-			retval = currentMember.get(Integer.parseInt(fieldNumber)+1);
-		}
 
 		return retval;
 	}

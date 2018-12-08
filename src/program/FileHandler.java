@@ -16,13 +16,16 @@ public class FileHandler{
 
   public Scanner openFile(String filename){
     try {
+
+			// Opretter et filobjekt med filnavnet.
       file = new File(filename);
 
-
+			// Tjekker om vi kan læse fra filen.
 			if (!file.canRead())
 			{
 				System.out.println("Cannot read file: " + filename);
 			} else {
+				// Smækker en scanner på filen, så vi kan læse linierne.
         scanner = new Scanner(file);
       }
 
@@ -32,6 +35,7 @@ public class FileHandler{
       System.out.println(e);
     }
 
+		// Returnere den scanner som er på filen, så den kan bruges af den funktion som kalder den.
     return scanner;
   }
 
@@ -39,28 +43,40 @@ public class FileHandler{
 
 	public void createJuniorMembers(String fileName, ArrayList<ArrayList<String>> juniorMembers){
 		try {
-			FileWriter fileWriter = new FileWriter(fileName);
-    	PrintWriter printWriter = new PrintWriter(fileWriter);
 
+			// Opretter writers, så vi kan skrive til filen.
+			fileWriter = new FileWriter(fileName);
+    	printWriter = new PrintWriter(fileWriter);
+
+			// Gemmer nuværende dato, fra operativsystemets ur.
 			Date date = new Date();
+
+			// Gør så vi kan læse datoen, med menneskeøjne.
 			String dateFormat = String.format("%1$td.%1$tm-%1$tY", date);
 
+			// For at lave filen flot, så de står i kollonner.
 			String indent = "                                         ";
 
+			// Skriver til filen.
 			printWriter.println("SK 41 JUNIOR MEDLEMMER. \nUdarbejdet d. " + dateFormat + ".\n");
     	printWriter.print("Klubben har følgende junior medlemmer: \n\n");
 
 			for (ArrayList<String> member : juniorMembers){
 
+					// Skriver informationerne på de brugere som er junior. (fra argumentet til funktionen)
 					printWriter.printf("%s  -  %s %s\n", member.get(1), member.get(2), member.get(3));
 					printWriter.printf("Adresse: %s\n", member.get(5));
 					printWriter.printf("Telefon: %s\n\n", member.get(6));
 
 			}
 
+			// God skik at lukke en strøm.
     	printWriter.close();
+
 		} catch (IOException e) {
 
+				// Hvis vi af en eller anden grund ikke kan skrive til filen, printer vi operativsystemets fejlmeddelelse.
+				System.out.println(e);
 		}
 	}
 
@@ -115,8 +131,8 @@ public class FileHandler{
 	public void writeMissedPayment(String fileName, ArrayList<ArrayList<String>> allMembers){
 		try {
 			int totalMissing = 0;
-			FileWriter fileWriter = new FileWriter(fileName);
-    	PrintWriter printWriter = new PrintWriter(fileWriter);
+			fileWriter = new FileWriter(fileName);
+    	printWriter = new PrintWriter(fileWriter);
 
 			Date date = new Date();
 			String dateFormat = String.format("%1$td.%1$tm-%1$tY", date);
@@ -145,22 +161,40 @@ public class FileHandler{
 	}
 
 	public String nextID(){
+		// Opretter en tom string variabel.
 		String newID = "";
+
+		// Får vi en scanner på den fil vi vil læse fra.
 		scanner = openFile("program/config.conf");
+
+		// Laver memberID vi har læst om til en string efter vi har plusset med en.
 		int newIDplus = Integer.parseInt(scanner.nextLine())+1;
+
+		// Plusser vores int med vores tomme streng, så det bliver til en String. [int + string -> string]
 		newID += newIDplus;
 
-
+		// Nu skal vi overskrive filen med det nye memberID.
 		try{
-			File file = new File("program/config.conf");
+			// Opretter fil objekt.
+			file = new File("program/config.conf");
+
+			// Skriver en ny fil, med filnavnet. (overskriver den gamle)
 			file.createNewFile();
-			PrintWriter printWriter = new PrintWriter(file);
+
+			// Opretter writer, så vi kan skrive til filen.
+			printWriter = new PrintWriter(file);
+
+			// Skriver den nye linje i filen.
 			printWriter.println(newID);
 			printWriter.flush();
 			printWriter.close();
-		} catch (IOException e) {
+
+		}
+		catch (IOException e)
+		{
 			System.out.println(e);
 		}
+
 		return newID;
 	}
 
@@ -182,17 +216,18 @@ public class FileHandler{
 	public boolean removeRow(String primaryKey, String tableName) {
 		try
 		{
-			File table = new File(tableName);
+			file = new File(tableName);
 
-			if (table.canWrite())
+			if (file.canWrite())
 			{
 				boolean rowDeleted = false;
-				RandomAccessFile raFile = new RandomAccessFile(table, "rw"); // rw = read/write
+				RandomAccessFile raFile = new RandomAccessFile(file, "rw"); // rw = read/write
 				String lineRead = "";
 				String[] row;
 				long fileOffset = 0;
 
 				raFile.seek(fileOffset);
+
 				lineRead = raFile.readLine();
 
 				while (lineRead != null && !rowDeleted)
