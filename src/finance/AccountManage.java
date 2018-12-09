@@ -7,13 +7,12 @@ import java.text.*;
 import program.*;
 
 import java.util.Calendar;
-
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 
 public class AccountManage{
+
 
 	private FileHandler fileHandler;
 	private ArrayList<ArrayList<String>> allMembers;
@@ -41,7 +40,7 @@ public class AccountManage{
 
 		// Laver 2 formater som vi kan bruge med date
 		// yearFormat vil returnere "yyyy"
-		//dateFormat vil returnere "yyyy-MM-dd"
+		// dateFormat vil returnere "yyyy-MM-dd"
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		DateFormat yearFormat = new SimpleDateFormat("yyyy");
 		Date date = new Date();
