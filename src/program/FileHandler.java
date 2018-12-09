@@ -83,18 +83,26 @@ public class FileHandler{
 	public void writeNewTeams(String fileName, ArrayList<ArrayList<String>> teamMembers){
 		try {
 			Integer teamCounter = 0;
-			FileWriter fileWriter = new FileWriter(fileName);
-    	PrintWriter printWriter = new PrintWriter(fileWriter);
 
+			// Så vi kan skrive til en fil.
+			fileWriter = new FileWriter(fileName);
+    	printWriter = new PrintWriter(fileWriter);
+
+			// Opretter en dato ud fra styresystemets ur.
 			Date date = new Date();
+
+			// Formatere det, så et menneske kan læse.
 			String dateFormat = String.format("%1$td.%1$tm-%1$tY", date);
 
+			// Denne bruger vi til at lave flotte prints.
 			String indent = "                                         ";
 
+			// skriver til fil.
 			printWriter.println("SKAK KLUB 41 NYE HOLD. \nUdarbejdet d. " + dateFormat + ".\n");
     	printWriter.print("Holdene er opsat som følgende: \n");
 
 			for (ArrayList<String> member : teamMembers){
+
 
 					if (teamCounter <= 2) {
 						if (teamCounter == 0) {

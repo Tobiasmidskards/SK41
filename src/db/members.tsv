@@ -7,7 +7,7 @@ userID	CPR	firstName	lastName	dateOfBirth	address	phoneNumber	email	rating	elo
 6	01239****	August	Andersen	30122001	Lundevænget 22	37485936	augustandersen@dayrep.com	1231	1543
 7	506653****	Marius	Schmidt	05061965	Vestergade 91	47362514	mariussmidt@hotmail.dk	1543	3547
 8	01883****	Filippa	Mikkelsen	15011988	Jernbanegade 17	37284956	filippamikkelsen@gmail.com	1231	3424
-10	90658****	Frederikke	Schou	29061958	Gartnervænget 39	47383946	frederikkeschou@hotmail.dk	9999	3547
+\N	90658****	Frederikke	Schou	29061958	Gartnervænget 39	47383946	frederikkeschou@hotmail.dk	9999	3547
 \N	261175****	lort	Kristiansen	26111975	Kongshøj Allé 86	37483935	johankristiansen@gmail.com	3424	1231
 \N	261175****	lort	Kristiansen	1207951995	Kongshøj Allé 86	37483935	johankristiansen@gmail.com	3424	1231
 \N	261175****	lort	Kristiansen	1207951995	OSTEVEJ 10	37483935	johankristiansen@gmail.com	3424	1231
@@ -19,3 +19,5 @@ userID	CPR	firstName	lastName	dateOfBirth	address	phoneNumber	email	rating	elo
 \N	2322****	Toby	Sørensen	63741993	Rødovrevej 12	36473823	tobi@gmail.com	4000	3000	
 1	290995****	Rederik	Jensen	29091995	Dalumvej 1 1tv	40464380	fsj95@hotmail.dk	5000	4000	
 2	32322****	Tobys	Sørensen	63741993	Rødovrevej 12	36473823	tobi@gmail.com	4000	3000	
+\N	90658****	Jonas	Schou	29061958	Gartnervænget 39	47383946	frederikkeschou@hotmail.dk	9999	3547	
+21	1207951699	Emil	Hansen	19111994	Rosenvængets Allé 10	20391022	emil@gmail.com	5000	6000	

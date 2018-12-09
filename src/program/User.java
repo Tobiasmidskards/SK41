@@ -5,6 +5,7 @@ public class User{
   private UserType userType;
   private int userID;
 
+	// Hvis userID -1, så er der ingen som er logged ind.
   public User(){
     this.userID = -1;
 		this.userType = UserType.NONE;

@@ -2,6 +2,8 @@ package program;
 
 import java.util.*;
 
+// Vi bruger kun denne til at printe vores menuer til skærmen.
+
 public class UI{
 
 	Scanner scanner;
