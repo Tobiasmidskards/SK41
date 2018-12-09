@@ -241,6 +241,8 @@ public class MemberManage{
   }
 
 	public String oldValue(String memberID, String fieldNumber){
+		// Bruges til at finde den gamle værdi, så vi kan printe den i Program.java
+
 		ArrayList<String> currentMember = new ArrayList<String>();
 		FileHandler fileHandler = new FileHandler();
 
