@@ -1,23 +1,11 @@
 userID	CPR	firstName	lastName	dateOfBirth	address	phoneNumber	email	rating	elo
-\N	90995****	Frederik	Jensen	29091995	Dalumvej 1 1tv	40464380	fsj95@hotmail.dk	5000	4000
-\N	2322****	Tobias	Sørensen	63741993	Rødovrevej 12	36473823	tobi@gmail.com	4000	3000
-3	131144****	Cecilie	Andersen	13111944	Strandalléen 22	25760965	cecilieandersen@gmail.com	3424	1231
+1	90995****	Frederik	Jensen	29091995	Dalumvej 1 1tv	40464380	fsj95@hotmail.dk	5000	4000
+2	2322****	Tobias	Sørensen	63741993	Rødovrevej 12	36473823	tobi@gmail.com	4000	3000
+3	131144****	Matijas	Andersen	13111944	Strandalléen 22	25760965	cecilieandersen@gmail.com	3424	1231
 4	11933****	Jacob	Jeppesen	07112011	Stokløkken 46	46372645	jacobjeppesen@gmail.com	1543	1231
 5	140865****	Mie	Jørgensen	14081965	Nyhavn 33	32347552	miejørgensen@dayrep.com	1349	1543
 6	01239****	August	Andersen	30122001	Lundevænget 22	37485936	augustandersen@dayrep.com	1231	1543
 7	506653****	Marius	Schmidt	05061965	Vestergade 91	47362514	mariussmidt@hotmail.dk	1543	3547
 8	01883****	Filippa	Mikkelsen	15011988	Jernbanegade 17	37284956	filippamikkelsen@gmail.com	1231	3424
-\N	90658****	Frederikke	Schou	29061958	Gartnervænget 39	47383946	frederikkeschou@hotmail.dk	9999	3547
-\N	261175****	lort	Kristiansen	26111975	Kongshøj Allé 86	37483935	johankristiansen@gmail.com	3424	1231
-\N	261175****	lort	Kristiansen	1207951995	Kongshøj Allé 86	37483935	johankristiansen@gmail.com	3424	1231
-\N	261175****	lort	Kristiansen	1207951995	OSTEVEJ 10	37483935	johankristiansen@gmail.com	3424	1231
-\N	261175****	lort	Kristiansen	1207951995	OSTEVEJ 10	37483935	johankristiansen@gmail.com	3424	1231
-\N	261175****	lort	Kristiansen	1207951995	OSTEVEJ 10	37483935	johankristiansen@gmail.com	3424	1231
-9	261175****	lort	Kristiansen	1207951995	OSTEVEJ 10	37483935	johankristiansen@gmail.com	8888	9999
-\N	2322****	Henning	Sørensen	63741993	Rødovrevej 12	36473823	tobi@gmail.com	4000	3000	
-\N	2322****	Tobias	Sørensen	63741993	Rødovrevej 12	36473823	tobi@gmail.com	4000	3000	
-\N	2322****	Toby	Sørensen	63741993	Rødovrevej 12	36473823	tobi@gmail.com	4000	3000	
-1	290995****	Rederik	Jensen	29091995	Dalumvej 1 1tv	40464380	fsj95@hotmail.dk	5000	4000	
-2	32322****	Tobys	Sørensen	63741993	Rødovrevej 12	36473823	tobi@gmail.com	4000	3000	
-\N	90658****	Jonas	Schou	29061958	Gartnervænget 39	47383946	frederikkeschou@hotmail.dk	9999	3547	
-21	1207951699	Emil	Hansen	19111994	Rosenvængets Allé 10	20391022	emil@gmail.com	5000	6000	
+9	261175****	Børge	Kristiansen	1207951995	OSTEVEJ 10	37483935	johankristiansen@gmail.com	8888	9999	
+10	1207951699	Søren	Hansen	19111994	Rosenvængets Allé 10	20391022	emil@gmail.com	5000	6000

@@ -5,15 +5,16 @@ import java.io.*;
 
 public class InputHandler{
 
-  //attributter
+  //Attributter
   private String input;
   private Scanner scanner;
 
-  //konstructor
+  //Konstructor
   public InputHandler(){
     scanner = new Scanner(System.in);
   }
 
+	//Metoder
   public String giveInput(){
     return scanner.nextLine();
   }

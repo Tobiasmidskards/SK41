@@ -10,7 +10,7 @@ public class MemberManage{
 	private ArrayList<ArrayList<String>> allMembers;
 	private ArrayList<String> currentMember;
   private Member temporaryMember;
-  private FileHandler filehandler;
+  private FileHandler fileHandler;
   private PrintWriter memberWriter;
   private PrintWriter accountWriter;
   private Scanner scanner;
@@ -18,13 +18,13 @@ public class MemberManage{
   private Date date;
 
 	public MemberManage() {
-    filehandler = new FileHandler();
+    fileHandler = new FileHandler();
 	}
 
   public void showAllMembers(){
 
 		// Smækker en scanner på den fil vi vil åbne.
-    scanner = filehandler.openFile("db/members.tsv");
+    scanner = fileHandler.openFile("db/members.tsv");
 
 		// Læser første linje, som vi ikke skal bruge
     scanner.nextLine();
@@ -66,15 +66,15 @@ public class MemberManage{
   public boolean addMember(String[] form){
 
 		// Bruger disse til at skrive til fil.
-		memberWriter = filehandler.printFile("db/members.tsv");
-		accountWriter = filehandler.printFile("db/accounting.tsv");
+		memberWriter = fileHandler.printFile("db/members.tsv");
+		accountWriter = fileHandler.printFile("db/accounting.tsv");
 
 		String userID = "";
 
 		line = "";
 
 		// Får det højeste memberID plusset med 1.
-		userID = filehandler.nextID();
+		userID = fileHandler.nextID();
 		line = userID + "\t";
 
 		for(int i = 0; i < form.length; i++){
@@ -144,7 +144,7 @@ public class MemberManage{
 			// En string[] til at holde på informationerne til acounting.tsv
 			String[] currentMemberAccounting = new String[5];
 
-			// En ny instans af filehandler.
+			// En ny instans af fileHandler.
 			fileHandler = new FileHandler();
 
 			// Smækker scannere på de filer vi vil læse fra.
@@ -186,7 +186,7 @@ public class MemberManage{
 							fileHandler.removeRow(memberID, "db/accounting.tsv");
 
 							// Nu vil vi gerne skrive de nye informationer.
-							memberWriter = filehandler.printFile("db/members.tsv");
+							memberWriter = fileHandler.printFile("db/members.tsv");
 
 							// Ændre informationen i vores string[] til accounting, hvis det er det vi vil ændre.
 							if(fieldNumber.equals("9")){
@@ -211,7 +211,7 @@ public class MemberManage{
 
 							fileHandler = new FileHandler();
 
-							accountWriter = filehandler.printFile("db/accounting.tsv");
+							accountWriter = fileHandler.printFile("db/accounting.tsv");
 
 							// Laver linien til accounting.tsv, som vi vil skrive.
 							line = "";
@@ -293,7 +293,7 @@ public class MemberManage{
 	}
 
   public void deleteMember(String memberID){
-		if(filehandler.removeRow(memberID, "db/members.tsv")){
+		if(fileHandler.removeRow(memberID, "db/members.tsv")){
 			System.out.println("\nBruger med ID [" + memberID + "] er blevet slettet.");
 		} else {
 			System.out.println("\nDer blev ikke fundet en bruger med ID [" + memberID + "]. Prøv igen.");

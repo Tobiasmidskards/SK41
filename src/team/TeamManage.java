@@ -35,8 +35,6 @@ public class TeamManage{
 				System.out.printf("%s %s - %s rating / %s ELO.\n", memberLine[2],memberLine[3], memberLine[8], memberLine[9]);
 			}
 
-
-
 		}
 	}
 
