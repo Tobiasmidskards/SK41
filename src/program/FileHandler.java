@@ -101,9 +101,10 @@ public class FileHandler{
 			printWriter.println("SKAK KLUB 41 NYE HOLD. \nUdarbejdet d. " + dateFormat + ".\n");
     	printWriter.print("Holdene er opsat som følgende: \n");
 
+      // Kører for hver medlem i ArrayListen teamMembers
 			for (ArrayList<String> member : teamMembers){
 
-
+          // Alt efter hvor mange medlemmer der er, bliver de inddelt i 3 hold.
 					if (teamCounter <= 2) {
 						if (teamCounter == 0) {
 							printWriter.printf("\nFØRSTE HOLDET:\n");
@@ -139,28 +140,39 @@ public class FileHandler{
 	public void writeMissedPayment(String fileName, ArrayList<ArrayList<String>> allMembers){
 		try {
 			int totalMissing = 0;
+
+      // Initialiseere fileWrier og printWrinter.
 			fileWriter = new FileWriter(fileName);
     	printWriter = new PrintWriter(fileWriter);
 
+
+      // Initialisere Date
 			Date date = new Date();
+
+      // Stringen dateFormat indeholder dagens dato "dd-mm-yyyy"
 			String dateFormat = String.format("%1$td.%1$tm-%1$tY", date);
 
 			String indent = "                                         ";
 
+      // Skriver i filen.
 			printWriter.println("Rapport for medlemmer i restance. \nUdarbejdet d. " + dateFormat + ".\n\n");
     	printWriter.print("Følgende medlemmer mangler at betale: \n\n");
 
+      // kører igennem for hvert medlem gemt i allMembers
 			for (ArrayList<String> member : allMembers){
 
+          // Udskrivninger og gemmer værdier i variabler for senere at kunne skrive dem i dokumentet.
 					String name = member.get(8) + " " + member.get(9);
 					name += indent.substring(0, indent.length() - name.length());
 
 					printWriter.printf("%s\t\t\t\t\t\t\t\t%s,-\n", name, member.get(4).substring(1));
 					totalMissing = totalMissing + Integer.parseInt(member.get(4));
 			}
+      // Udregner det totale manglende beløb
 			String total = "Total:";
 			total += indent.substring(0, indent.length() - total.length());
 
+      // Skriver alting i dokumentet.
 			printWriter.printf("\n%s\t\t\t\t\t\t\t\t%d,-", total,Math.abs(totalMissing));
     	printWriter.close();
 		} catch (IOException e) {

@@ -14,6 +14,7 @@ public class Member{
 
   }
 
+  //Bare en masse setters og getters
 	public String getName() {
 		return this.name;
 	}
